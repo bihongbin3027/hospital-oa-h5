@@ -1,20 +1,15 @@
-const {
-  override,
-  fixBabelImports,
-  addWebpackAlias,
-  addLessLoader,
-} = require('customize-cra')
-const path = require('path')
+const { override, fixBabelImports, addLessLoader } = require('customize-cra')
+// const path = require('path')
 
 module.exports = override(
   fixBabelImports('import', {
     libraryName: 'antd-mobile',
     style: true,
   }),
-  addWebpackAlias({
-    // eslint-disable-next-line
-    ['@']: path.resolve(__dirname, 'src'),
-  }),
+  // addWebpackAlias({
+  //   // eslint-disable-next-line
+  //   ['@']: path.resolve(__dirname, 'src'),
+  // }),
   addLessLoader({
     modifyVars: {
       // 页面背景
