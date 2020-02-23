@@ -15,7 +15,7 @@ export const homeTabItem = [
   },
   {
     title: '我的',
-    selectedName: 'mine',
+    selectedName: 'personal',
     icon: 'https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg',
     selectedIcon:
       'https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg',

@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer } from 'react'
 import { TabBar } from 'antd-mobile'
 import { fromJS } from 'immutable'
+import Workbench from './workbench/index'
+import Personal from './personal/index'
 import { Wrapper, FootItemIcon } from '../../style'
 import { homeTabItem } from '../../utils/config'
 
@@ -40,11 +42,11 @@ function Home() {
   const renderContent = (selectedName: string) => {
     // 工作台
     if (selectedName === 'workbench') {
-      return <>one</>
+      return <Workbench />
     }
     // 我的
-    if (selectedName === 'mine') {
-      return <>two</>
+    if (selectedName === 'personal') {
+      return <Personal />
     }
   }
 

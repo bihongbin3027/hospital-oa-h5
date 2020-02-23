@@ -17,6 +17,17 @@ export const Wrapper = styled.div`
       padding-right: 30px;
     }
   }
+  .am-wingblank-md {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+`
+
+export const PageContainer = styled.div`
+  height: 100%;
+  background-color: ${(props: { backgroundColor: string }) =>
+    props.backgroundColor};
+  overflow-y: auto;
 `
 
 export const FootItemIcon = styled.i`
