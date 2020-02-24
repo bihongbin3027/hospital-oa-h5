@@ -14,6 +14,9 @@ module.exports = override(
     modifyVars: {
       // 页面背景
       '@fill-body': '#f4f1f4',
+      // 标题字体大小
+      '@font-size-heading': '16px',
     },
+    javascriptEnabled: true,
   }),
 )

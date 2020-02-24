@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 
-export const GridWrap = styled.div`
+export const GridBox = styled.div`
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0px 1px 6px 0px rgba(170, 170, 170, 0.5);
+  z-index: 1;
+  overflow: hidden;
+`
+
+export const GridBoxBg = styled.div`
   position: relative;
   &::after {
     content: '';
@@ -8,17 +16,10 @@ export const GridWrap = styled.div`
     left: -10px;
     right: -10px;
     top: -21px;
-    bottom: 30px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    bottom: 28px;
+    border-bottom-left-radius: 3%;
+    border-bottom-right-radius: 3%;
     background-color: ${props => props.theme['@brand-primary']};
-  }
-  .am-grid {
-    position: relative;
-    border-radius: 8px;
-    box-shadow: 0px 1px 6px 0px rgba(170, 170, 170, 0.5);
-    z-index: 1;
-    overflow: hidden;
   }
 `
 
@@ -27,18 +28,17 @@ export const GridIcon = styled.img`
   height: 45px;
   border-radius: 100%;
   background-image: url(${(props: { src: string }) => props.src});
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   ~ div {
     font-size: 12px;
   }
 `
-export const AgentTitle = styled.div`
-  font-size: 16px;
-  margin-top: 20px;
-  span {
-    font-size: 12px;
+export const AgentBox = styled.div`
+  .agent-title {
+    margin-top: 20px;
+  }
+  .agent-num {
     margin-left: 8px;
-    color: ${props => props.theme['@color-text-caption']};
   }
 `
 
@@ -56,6 +56,9 @@ export const AgentLi = styled.li`
   .agent-text {
     flex: 1;
   }
+  .color-text-caption {
+    margin-top: 16px;
+  }
 `
 
 export const AgentIcon = styled.i`
@@ -63,19 +66,4 @@ export const AgentIcon = styled.i`
   height: 20px;
   background-color: ${(props: { src: string }) => props.src};
   margin-right: 12px;
-`
-
-export const AgentLiTitle = styled.div`
-  font-size: 16px;
-`
-
-export const AgentLiStatus = styled.div`
-  color: ${props => props.color};
-  font-size: 12px;
-`
-
-export const AgentLiAid = styled.div`
-  color: ${props => props.theme['@color-text-caption']};
-  font-size: 12px;
-  margin-top: 16px;
 `
