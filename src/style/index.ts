@@ -90,3 +90,17 @@ export const GridBoxHeader = styled.div`
   padding-top: 12px;
   padding-bottom: 12px;
 `
+
+// 底部tabBar操作弹窗(中间+号)
+export const NewlyOpenedBox = styled.div`
+  min-height: 225px;
+  padding: 20px 10px;
+  .entrance-icon {
+    width: 26px;
+    height: 26px;
+  }
+  ~ .cross-circle {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+`

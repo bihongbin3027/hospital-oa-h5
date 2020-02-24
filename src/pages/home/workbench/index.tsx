@@ -11,6 +11,9 @@ import {
   AgentIcon,
 } from './style'
 
+const normalImg =
+  'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png'
+
 function reducer(
   state: {
     set: (key: string, value: string) => any
@@ -32,23 +35,19 @@ function Workbench() {
       gridData: [
         {
           text: '公文收发',
-          icon:
-            'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
+          icon: normalImg,
         },
         {
           text: '考勤管理',
-          icon:
-            'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
+          icon: normalImg,
         },
         {
           text: '排班管理',
-          icon:
-            'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
+          icon: normalImg,
         },
         {
           text: '审批流程',
-          icon:
-            'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
+          icon: normalImg,
         },
       ],
     }),
@@ -103,7 +102,7 @@ function Workbench() {
               <div className="agent-text">
                 <Flex justify="between">
                   <FontMd>考勤申诉</FontMd>
-                  <FontXs color="brand-tension">待签收</FontXs>
+                  <FontXs className="brand-tension">待签收</FontXs>
                 </Flex>
                 <Flex justify="between">
                   <FontXs className="color-text-caption">
