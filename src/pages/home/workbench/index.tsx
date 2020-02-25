@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react'
+import { withRouter } from 'react-router-dom'
 import { Grid, Flex, WingBlank, WhiteSpace } from 'antd-mobile'
 import { fromJS } from 'immutable'
+import { normalImage } from '../../../utils/config'
 import { PageContainer, GridBox, FontMd, FontXs } from '../../../style'
 import {
   GridBoxBg,
@@ -10,9 +12,6 @@ import {
   AgentLi,
   AgentIcon,
 } from './style'
-
-const normalImg =
-  'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png'
 
 function reducer(
   state: {
@@ -28,32 +27,45 @@ function reducer(
   }
 }
 
-function Workbench() {
+function Workbench(props: any) {
   const [data] = useReducer(
     reducer,
     fromJS({
       gridData: [
         {
+          route: '/clerical-board',
           text: '公文收发',
-          icon: normalImg,
+          icon: normalImage,
         },
         {
           text: '考勤管理',
-          icon: normalImg,
+          icon: normalImage,
         },
         {
           text: '排班管理',
-          icon: normalImg,
+          icon: normalImage,
         },
         {
           text: '审批流程',
-          icon: normalImg,
+          icon: normalImage,
         },
       ],
     }),
   )
 
   const { gridData } = data.toJS()
+
+  /**
+   * @description 首页头部菜单入口跳转
+   * @author biHongBin
+   * @param {Any} el
+   * @Date 2020-02-25 17:12:31
+   */
+  const gridMenuClick = (el: any) => {
+    if (el.route) {
+      props.history.push(el.route)
+    }
+  }
 
   return (
     <PageContainer backgroundColor="#fff">
@@ -65,6 +77,7 @@ function Workbench() {
               data={gridData}
               square={false}
               hasLine={false}
+              onClick={el => gridMenuClick(el)}
               renderItem={(dataItem: any) => (
                 <>
                   <GridIcon src={dataItem.icon} />
@@ -119,4 +132,4 @@ function Workbench() {
   )
 }
 
-export default Workbench
+export default withRouter(Workbench)

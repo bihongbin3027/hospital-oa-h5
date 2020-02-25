@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { fromJS } from 'immutable'
-import Workbench from './workbench/index'
-import Personal from './personal/index'
+import Sign from './sign/index'
+import Related from './related/index'
 import TabBarBox from '../../components/tabBarBox'
 import { normalImage } from '../../utils/config'
 
@@ -24,12 +24,12 @@ function Home() {
     reducer,
     fromJS({
       // 默认选中
-      normalSelect: '工作台',
+      normalSelect: '公文签收',
       // 底部tabBar数据
       tabBarData: [
         {
-          components: <Workbench />,
-          title: '工作台',
+          components: <Sign />,
+          title: '公文签收',
           icon:
             'https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg',
           selectedIcon:
@@ -41,8 +41,8 @@ function Home() {
             'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg',
         },
         {
-          components: <Personal />,
-          title: '我的',
+          components: <Related />,
+          title: '与我相关',
           icon:
             'https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg',
           selectedIcon:
@@ -54,17 +54,12 @@ function Home() {
         {
           route: '',
           icon: normalImage,
-          text: '发布公文',
+          text: '公文拟发',
         },
         {
           route: '',
           icon: normalImage,
-          text: '考勤打卡',
-        },
-        {
-          route: '',
-          icon: normalImage,
-          text: '发起审批',
+          text: '公文发文',
         },
       ],
     }),
