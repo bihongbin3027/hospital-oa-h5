@@ -17,6 +17,9 @@ export const Wrapper = styled.div`
   .color-text-caption {
     color: ${props => props.theme['@color-text-caption']};
   }
+  .color-text-secondary {
+    color: ${props => props.theme['@color-text-secondary']};
+  }
   .brand-primary {
     color: ${props => props.theme['@brand-primary']};
   }
@@ -28,6 +31,11 @@ export const Wrapper = styled.div`
   }
   .brand-tension {
     color: ${props => props.theme['@brand-tension']};
+  }
+
+  /* 全局边距 */
+  .m-r-10 {
+    margin-right: 10px;
   }
 
   /* 覆盖ant-mobile样式 */
@@ -63,6 +71,11 @@ export const FontMm = styled(FontXs)`
   font-size: 13px;
 `
 
+// 重置默认字体及颜色
+export const FontMr = styled(FontXs)`
+  font-size: 14px;
+`
+
 // 较大字体及颜色
 export const FontMd = styled(FontXs)`
   font-size: 16px;
@@ -74,6 +87,14 @@ export const FootItemIcon = styled.i`
   height: 22px;
   background-image: url(${(props: { icon: string }) => props.icon});
   background-size: contain;
+`
+
+// 编辑图标
+export const EditIcon = styled.div`
+  width: 18px;
+  height: 18px;
+  background-color: #ddd;
+  border-radius: 2px;
 `
 
 // 阴影的格子容器
@@ -102,5 +123,25 @@ export const NewlyOpenedBox = styled.div`
   ~ .cross-circle {
     margin-top: 15px;
     margin-bottom: 15px;
+  }
+`
+
+// 公文管理列表-可用于多种列表结构
+export const ListLi = styled.li`
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid ${props => props.theme['@border-color-base']};
+  list-style: none;
+  .title {
+    margin-top: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .name-date {
+    margin-top: 16px;
+  }
+  .name {
+    margin-right: 10px;
   }
 `

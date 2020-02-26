@@ -21,11 +21,20 @@ function reducer(
   }
 }
 
-function TabBarBox(props: {
+interface PropsType {
   selected: string
   tabBar: Array<object>
   actionSheet: Array<object>
-}) {
+}
+
+interface TabBarArrayType {
+  title: string
+  icon: string
+  selectedIcon: string
+  components: any
+}
+
+function TabBarBox(props: PropsType) {
   const [data, dispatch] = useReducer(
     reducer,
     fromJS({
@@ -95,7 +104,7 @@ function TabBarBox(props: {
   return (
     <Wrapper>
       <TabBar tintColor="#497fc5" barTintColor="#fff">
-        {tabBarData.map((item: any, index: number) => {
+        {tabBarData.map((item: TabBarArrayType, index: number) => {
           return (
             <TabBar.Item
               title={item.title}
