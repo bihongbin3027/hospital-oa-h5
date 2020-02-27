@@ -52,12 +52,12 @@ function Home() {
       // 底部动作面板数据
       newlyOpenedData: [
         {
-          route: '',
+          route: '/clerical-template/proposed',
           icon: normalImage,
           text: '公文拟发',
         },
         {
-          route: '',
+          route: '/clerical-template/post',
           icon: normalImage,
           text: '公文发文',
         },

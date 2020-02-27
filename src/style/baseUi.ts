@@ -30,6 +30,9 @@ export const ButtonUi = styled.a`
 export const TagUi = styled.div`
   padding: 2px 5px;
   border-radius: 2px;
+  &.md {
+    padding: 3px 9px;
+  }
   &.tag-fill {
     color: ${props => props.theme['@color-text-fill']};
     background: ${props => props.theme['@tag-fill']};
@@ -37,5 +40,13 @@ export const TagUi = styled.div`
   &.tag-primary {
     color: ${props => props.theme['@brand-primary']};
     background: ${props => props.theme['@tag-primary']};
+  }
+  &.tag-active {
+    color: #fff;
+    background: ${props => props.theme['@tag-active']};
+  }
+  &.tag-grey {
+    color: ${props => props.theme['@color-text-caption']};
+    background: ${props => props.theme['@tag-grey']};
   }
 `

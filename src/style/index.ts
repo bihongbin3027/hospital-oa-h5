@@ -1,6 +1,14 @@
 // 全局样式
 
 import styled from 'styled-components'
+import { normalImage } from '../utils/config'
+
+interface IconProps {
+  width?: string
+  height?: string
+  icon?: string
+  radius?: string
+}
 
 // 最外层包裹容器
 export const Wrapper = styled.div`
@@ -66,6 +74,11 @@ export const FontXs = styled.div`
     props.display ? props.display : 'block'};
 `
 
+// 特别小号字体及颜色
+export const FontTiny = styled(FontXs)`
+  font-size: 10px;
+`
+
 // 中等字体及颜色
 export const FontMm = styled(FontXs)`
   font-size: 13px;
@@ -81,20 +94,17 @@ export const FontMd = styled(FontXs)`
   font-size: 16px;
 `
 
-// 底部标签栏图标
-export const FootItemIcon = styled.i`
-  width: 22px;
-  height: 22px;
-  background-image: url(${(props: { icon: string }) => props.icon});
+// 自定义图标
+export const IconStyle = styled.span`
+  display: inline-block;
+  width: ${(props: IconProps) => (props.width ? props.width + 'px' : '20px')};
+  height: ${(props: IconProps) =>
+    props.height ? props.height + 'px' : '20px'};
+  border-radius: ${(props: IconProps) =>
+    props.radius ? props.radius + 'px' : 0};
+  background-image: url(${(props: IconProps) =>
+    props.icon ? props.icon : normalImage});
   background-size: contain;
-`
-
-// 编辑图标
-export const EditIcon = styled.div`
-  width: 18px;
-  height: 18px;
-  background-color: #ddd;
-  border-radius: 2px;
 `
 
 // 阴影的格子容器

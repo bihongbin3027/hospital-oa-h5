@@ -8,7 +8,7 @@ import {
   FontMm,
   FontMd,
   FontMr,
-  EditIcon,
+  IconStyle,
 } from '../../../style'
 import { normalImage } from '../../../utils/config'
 
@@ -63,7 +63,7 @@ function Related() {
                   </Item>,
                 ]}
               >
-                <EditIcon />
+                <IconStyle width="18" height="18" radius="2" />
               </Popover>
             </Flex>
           </Flex>

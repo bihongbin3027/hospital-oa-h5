@@ -1,10 +1,9 @@
 import axios from 'axios'
 import { Toast } from 'antd-mobile'
-import configUrl from '../envConfig'
 import { loadFromLocal } from '../utils'
 
 const service = axios.create({
-  baseURL: configUrl.baseUrl,
+  baseURL: process.env.REACT_APP_API_URL,
   withCredentials: true, // 跨域请求时发送Cookie
   timeout: 8000,
 })

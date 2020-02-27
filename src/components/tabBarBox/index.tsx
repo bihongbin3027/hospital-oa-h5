@@ -1,7 +1,8 @@
 import React, { useEffect, useReducer } from 'react'
+import { withRouter } from 'react-router-dom'
 import { TabBar, Modal, Grid, Icon } from 'antd-mobile'
 import { fromJS } from 'immutable'
-import { Wrapper, FootItemIcon, NewlyOpenedBox } from '../../style'
+import { Wrapper, IconStyle, NewlyOpenedBox } from '../../style'
 
 function reducer(
   state: {
@@ -21,12 +22,6 @@ function reducer(
   }
 }
 
-interface PropsType {
-  selected: string
-  tabBar: Array<object>
-  actionSheet: Array<object>
-}
-
 interface TabBarArrayType {
   title: string
   icon: string
@@ -34,7 +29,7 @@ interface TabBarArrayType {
   components: any
 }
 
-function TabBarBox(props: PropsType) {
+function TabBarBox(props: any) {
   const [data, dispatch] = useReducer(
     reducer,
     fromJS({
@@ -97,6 +92,17 @@ function TabBarBox(props: PropsType) {
     }
   }
 
+  /**
+   * @description 跳转到指定页面
+   * @author biHongBin
+   * @Date 2020-02-27 11:53:27
+   */
+  const handleOpenRoute = (routeName: string) => {
+    if (routeName) {
+      props.history.push(routeName)
+    }
+  }
+
   useEffect(() => {
     document.title = selectedTab
   }, [selectedTab])
@@ -110,8 +116,10 @@ function TabBarBox(props: PropsType) {
               title={item.title}
               key={index}
               selected={item.title === selectedTab}
-              icon={<FootItemIcon icon={item.icon} />}
-              selectedIcon={<FootItemIcon icon={item.selectedIcon} />}
+              icon={<IconStyle width="22" height="22" icon={item.icon} />}
+              selectedIcon={
+                <IconStyle width="22" height="22" icon={item.selectedIcon} />
+              }
               onPress={() => handleSelectedIcon(item.title)}
             >
               {renderContent(item.components)}
@@ -131,7 +139,10 @@ function TabBarBox(props: PropsType) {
             hasLine={false}
             columnNum={5}
             renderItem={(dataItem: any) => (
-              <div className="am-grid-item-inner-content">
+              <div
+                className="am-grid-item-inner-content"
+                onClick={() => handleOpenRoute(dataItem.route)}
+              >
                 <img
                   className="entrance-icon"
                   src={dataItem.icon}
@@ -154,4 +165,4 @@ function TabBarBox(props: PropsType) {
   )
 }
 
-export default TabBarBox
+export default withRouter(TabBarBox)
