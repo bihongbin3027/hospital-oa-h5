@@ -5,6 +5,7 @@ export const themesDefault = {
   '@color-text-disabled': '#bbb', // 失效
   '@color-text-secondary': '#99c0f2', //辅助色
   '@color-text-fill': '#44bed7',
+  '@color-text-delete': '#aa4f4f',
 
   // 全局/品牌色
   '@brand-primary': '#497fc5',

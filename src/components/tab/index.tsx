@@ -4,12 +4,16 @@ import { fromJS } from 'immutable'
 import { FontMd } from '../../style'
 import { TabWrap } from './style'
 
-function reducer(
-  state: {
-    set: (key: string, value: any) => any
-  },
-  action: { type: string; value: any },
-) {
+interface StateType {
+  set: (key: string, value: any) => any
+}
+
+interface ActionType {
+  type: string
+  value: any
+}
+
+function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeTabIndex':
       return state.set('tabIndex', action.value)

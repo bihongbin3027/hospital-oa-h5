@@ -4,12 +4,16 @@ import { TabBar, Modal, Grid, Icon } from 'antd-mobile'
 import { fromJS } from 'immutable'
 import { Wrapper, IconStyle, NewlyOpenedBox } from '../../style'
 
-function reducer(
-  state: {
-    set: (key: string, value: any) => any
-  },
-  action: { type: string; value: any },
-) {
+interface StateType {
+  set: (key: string, value: any) => any
+}
+
+interface ActionType {
+  type: string
+  value: any
+}
+
+function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeTitle':
       return state.set('documentTitle', action.value)
@@ -116,9 +120,9 @@ function TabBarBox(props: any) {
               title={item.title}
               key={index}
               selected={item.title === selectedTab}
-              icon={<IconStyle width="22" height="22" icon={item.icon} />}
+              icon={<IconStyle width={22} height={22} icon={item.icon} />}
               selectedIcon={
-                <IconStyle width="22" height="22" icon={item.selectedIcon} />
+                <IconStyle width={22} height={22} icon={item.selectedIcon} />
               }
               onPress={() => handleSelectedIcon(item.title)}
             >

@@ -7,6 +7,7 @@ export const BackNextWrap = styled.div`
   right: 0;
   width: 100%;
   border-top: 1px solid ${props => props.theme['@border-color-base']};
+  background-color: #fff;
   z-index: 1;
   .bw-btn {
     height: 50px;

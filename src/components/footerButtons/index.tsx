@@ -21,8 +21,8 @@ function FooterButtons(props: any) {
               {item.icon ? (
                 <IconStyle
                   className="m-r-10"
-                  width="24"
-                  height="24"
+                  width={24}
+                  height={24}
                   icon={item.icon}
                 />
               ) : null}

@@ -13,12 +13,16 @@ import {
   AgentIcon,
 } from './style'
 
-function reducer(
-  state: {
-    set: (key: string, value: string) => any
-  },
-  action: { type: string; value: string },
-) {
+interface StateType {
+  set: (key: string, value: any) => any
+}
+
+interface ActionType {
+  type: string
+  value: any
+}
+
+function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeValue':
       return state.set('key', action.value)

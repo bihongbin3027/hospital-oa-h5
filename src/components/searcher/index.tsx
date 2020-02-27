@@ -9,12 +9,19 @@ import { SearchWrap, SearchRange } from './style'
 
 const brand_primary = themesDefault['@brand-primary']
 
-function reducer(
-  state: {
-    set: (key: string, value: any) => any
-  },
-  action: { type: string; value: any },
-) {
+interface PropsTypes {
+  search: (value: object) => any
+}
+interface StateType {
+  set: (key: string, value: any) => any
+}
+
+interface ActionType {
+  type: string
+  value: any
+}
+
+function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeSearchValue':
       return state.set('searchValue', action.value)
@@ -29,10 +36,6 @@ function reducer(
     default:
       return state
   }
-}
-
-interface PropsTypes {
-  search: (value: object) => any
 }
 
 function Searcher(props: PropsTypes) {

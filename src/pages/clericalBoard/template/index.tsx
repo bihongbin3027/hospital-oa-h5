@@ -6,7 +6,7 @@ import FooterButtons from '../../../components/footerButtons'
 import { Wrapper, PageContainer, IconStyle, FontMd } from '../../../style'
 import { TempWrap } from './style'
 
-function SelectedTemplate(props: any) {
+function SelectedTemplate(props: { history: any; match?: any }) {
   const [footData] = useState([
     {
       icon: '',
@@ -21,7 +21,20 @@ function SelectedTemplate(props: any) {
       text: '下一步',
       textColor: 'brand-primary',
       click: () => {
-        console.log(process.env.REACT_APP_API_URL)
+        const {
+          match: {
+            params: { id },
+          },
+          history,
+        } = props
+        // 公文拟稿
+        if (id === 'draft') {
+          history.push('/clerical-draft-create')
+        }
+        // 公文发文
+        if (id === 'post') {
+          history.push('/clerical-post-create')
+        }
       },
     },
   ])
@@ -35,7 +48,7 @@ function SelectedTemplate(props: any) {
       <PageContainer backgroundColor="#fff">
         <TempWrap>
           <Flex className="temp-line" align="start">
-            <IconStyle className="temp-icon" width="19" height="19" />
+            <IconStyle className="temp-icon" width={19} height={19} />
             <div className="temp-box">
               <FontMd className="temp-title">请选择公文模板</FontMd>
               <Flex className="temp-tag">
@@ -49,7 +62,7 @@ function SelectedTemplate(props: any) {
             </div>
           </Flex>
           <Flex className="temp-line" align="start">
-            <IconStyle className="temp-icon" width="19" height="19" />
+            <IconStyle className="temp-icon" width={19} height={19} />
             <div className="temp-box">
               <FontMd className="temp-title">请选择公文类型</FontMd>
               <Flex className="temp-tag">

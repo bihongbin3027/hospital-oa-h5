@@ -4,19 +4,19 @@ import styled from 'styled-components'
 import { normalImage } from '../utils/config'
 
 interface IconProps {
-  width?: string
-  height?: string
+  width?: number
+  height?: number
   icon?: string
-  radius?: string
+  radius?: number
 }
 
 // 最外层包裹容器
 export const Wrapper = styled.div`
   position: fixed;
-  height: 100%;
   width: 100%;
   top: 0;
-  bottom: 0;
+  bottom: ${(props: { footer?: string }) =>
+    props.footer ? props.footer + 'px' : 0};
   left: 0;
   right: 0;
   z-index: 1;
@@ -27,6 +27,9 @@ export const Wrapper = styled.div`
   }
   .color-text-secondary {
     color: ${props => props.theme['@color-text-secondary']};
+  }
+  .color-text-delete {
+    color: ${props => props.theme['@color-text-delete']};
   }
   .brand-primary {
     color: ${props => props.theme['@brand-primary']};
@@ -57,12 +60,56 @@ export const Wrapper = styled.div`
     margin-left: 10px;
     margin-right: 10px;
   }
+  .am-list-style {
+    .am-list-header-style {
+      min-height: 54px;
+    }
+    .am-list-input {
+      height: 40px;
+      min-height: 40px;
+      padding-left: 0;
+      .am-list-line {
+        padding-right: 0;
+        border: 0 none;
+        &::after {
+          display: none !important;
+        }
+      }
+    }
+    .am-list-textarea {
+      padding-left: 0;
+      padding-right: 0;
+      .am-textarea-control {
+        padding-top: 0;
+      }
+      .am-textarea-count {
+        span {
+          color: #bbb;
+        }
+      }
+      textarea {
+        font-size: 13px;
+      }
+    }
+  }
+  .am-list-avatar {
+    .am-flexbox-item {
+      &::before {
+        padding-bottom: 125%;
+      }
+    }
+    .am-flexbox {
+      height: 100%;
+      justify-content: center;
+      overflow: visible;
+    }
+  }
 `
 
 // 自定义内层包裹容器的背景色
 export const PageContainer = styled.div`
   height: 100%;
-  background-color: ${(props: { backgroundColor: string }) =>
+  background-color: ${(props: { backgroundColor?: string }) =>
     props.backgroundColor};
   overflow-y: auto;
 `
@@ -105,6 +152,31 @@ export const IconStyle = styled.span`
   background-image: url(${(props: IconProps) =>
     props.icon ? props.icon : normalImage});
   background-size: contain;
+`
+
+// 人员头像区域
+export const AvatarArea = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: 5px;
+  .avatar-box {
+    position: relative;
+  }
+  .block-delete {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    border-radius: 100%;
+    z-index: 1;
+  }
+  .avatar-name {
+    margin-top: -2px;
+  }
+  .add-avatar {
+    margin-top: -15px;
+  }
 `
 
 // 阴影的格子容器

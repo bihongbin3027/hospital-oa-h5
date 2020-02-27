@@ -5,12 +5,16 @@ import Personal from './personal/index'
 import TabBarBox from '../../components/tabBarBox'
 import { normalImage } from '../../utils/config'
 
-function reducer(
-  state: {
-    set: (key: string, value: any) => any
-  },
-  action: { type: string; value: any },
-) {
+interface StateType {
+  set: (key: string, value: any) => any
+}
+
+interface ActionType {
+  type: string
+  value: any
+}
+
+function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeValue':
       return state.set('value', action.value)

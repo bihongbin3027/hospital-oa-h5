@@ -16,6 +16,8 @@ module.exports = override(
       '@fill-body': '#f4f1f4',
       // 标题字体大小
       '@font-size-heading': '16px',
+      // 垂直间距
+      '@v-spacing-md': '10px',
     },
     javascriptEnabled: true,
   }),

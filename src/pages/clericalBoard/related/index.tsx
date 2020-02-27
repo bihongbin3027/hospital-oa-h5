@@ -63,7 +63,7 @@ function Related() {
                   </Item>,
                 ]}
               >
-                <IconStyle width="18" height="18" radius="2" />
+                <IconStyle width={18} height={18} radius={2} />
               </Popover>
             </Flex>
           </Flex>

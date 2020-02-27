@@ -5,12 +5,16 @@ import Related from './related/index'
 import TabBarBox from '../../components/tabBarBox'
 import { normalImage } from '../../utils/config'
 
-function reducer(
-  state: {
-    set: (key: string, value: any) => any
-  },
-  action: { type: string; value: any },
-) {
+interface StateType {
+  set: (key: string, value: any) => any
+}
+
+interface ActionType {
+  type: string
+  value: any
+}
+
+function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeValue':
       return state.set('value', action.value)
@@ -52,9 +56,9 @@ function Home() {
       // 底部动作面板数据
       newlyOpenedData: [
         {
-          route: '/clerical-template/proposed',
+          route: '/clerical-template/draft',
           icon: normalImage,
-          text: '公文拟发',
+          text: '公文拟稿',
         },
         {
           route: '/clerical-template/post',
