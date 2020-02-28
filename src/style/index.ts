@@ -104,6 +104,29 @@ export const Wrapper = styled.div`
       overflow: visible;
     }
   }
+  .am-switch-sm {
+    .checkbox {
+      width: 40px;
+      height: 20px;
+      &:before,
+      &:after {
+        height: 17px;
+      }
+      &:before {
+        width: 37px;
+      }
+      &:after {
+        width: 17px;
+      }
+    }
+  }
+  .am-input-size-sm {
+    .am-input-control {
+      input {
+        font-size: 14px;
+      }
+    }
+  }
 `
 
 // 自定义内层包裹容器的背景色

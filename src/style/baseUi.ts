@@ -33,6 +33,10 @@ export const TagUi = styled.div`
   &.md {
     padding: 3px 9px;
   }
+  &.tag-grey {
+    color: ${props => props.theme['@color-text-caption']};
+    background: ${props => props.theme['@tag-grey']};
+  }
   &.tag-fill {
     color: ${props => props.theme['@color-text-fill']};
     background: ${props => props.theme['@tag-fill']};
@@ -44,9 +48,5 @@ export const TagUi = styled.div`
   &.tag-active {
     color: #fff;
     background: ${props => props.theme['@tag-active']};
-  }
-  &.tag-grey {
-    color: ${props => props.theme['@color-text-caption']};
-    background: ${props => props.theme['@tag-grey']};
   }
 `

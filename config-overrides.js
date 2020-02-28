@@ -18,6 +18,13 @@ module.exports = override(
       '@font-size-heading': '16px',
       // 垂直间距
       '@v-spacing-md': '10px',
+      // switch开关
+      '@switch-fill': '#497fc5',
+      // modal
+      '@modal-font-size-heading': '16px',
+      '@modal-button-font-size': '16px',
+      // 全局品牌色
+      '@brand-primary': '#497fc5',
     },
     javascriptEnabled: true,
   }),
