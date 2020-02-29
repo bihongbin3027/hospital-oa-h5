@@ -350,6 +350,7 @@ function PostCreate(props: PropsType) {
             <WhiteSpace size="sm" />
           </Item>
         </List>
+        <WhiteSpace />
       </PageContainer>
       <SelectTypeModal
         title={selectModalTitle.title}
