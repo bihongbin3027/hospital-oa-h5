@@ -45,11 +45,28 @@ export const Wrapper = styled.div`
   }
 
   /* 全局边距 */
-  .m-r-10 {
+  .m-r-xs {
+    margin-right: 5px;
+  }
+  .m-r-sm {
     margin-right: 10px;
+  }
+  .m-r-md {
+    margin-right: 15px;
+  }
+  .m-r-lg {
+    margin-right: 20px;
   }
 
   /* 覆盖ant-mobile样式 */
+  .am-top-border-hidden {
+    /* 隐藏组件套用的时候边框重叠 */
+    margin-top: -1px;
+  }
+  .am-bottom-border-hidden {
+    /* 隐藏组件套用的时候边框重叠 */
+    margin-bottom: -1px;
+  }
   .am-tabs-tab-bar-wrap {
     .am-tab-bar-bar {
       padding-left: 30px;
@@ -126,6 +143,9 @@ export const Wrapper = styled.div`
         font-size: 14px;
       }
     }
+  }
+  .am-text-line {
+    line-height: 19px;
   }
 `
 

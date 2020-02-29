@@ -20,7 +20,7 @@ function FooterButtons(props: any) {
             <Flex className="bw-btn" justify="center">
               {item.icon ? (
                 <IconStyle
-                  className="m-r-10"
+                  className="m-r-sm"
                   width={24}
                   height={24}
                   icon={item.icon}

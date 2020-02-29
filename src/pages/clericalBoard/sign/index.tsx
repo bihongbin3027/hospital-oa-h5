@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
 import { WingBlank, Flex } from 'antd-mobile'
 import { Tab, TabType } from '../../../components/tab'
 import { TagUi } from '../../../style/baseUi'
@@ -6,7 +7,13 @@ import Searcher from '../../../components/searcher'
 import { PageContainer, ListLi, FontMm, FontMd } from '../../../style'
 import { normalImage } from '../../../utils/config'
 
-function SignFor() {
+interface PropsTypes {
+  history: {
+    push: (routeName: string) => void
+  }
+}
+
+function SignFor(props: PropsTypes) {
   const [tabData] = useState([
     {
       title: '待签收',
@@ -40,12 +47,21 @@ function SignFor() {
     console.log('tab', tab)
   }
 
+  /**
+   * @description 跳转到详情
+   * @author biHongBin
+   * @Date 2020-02-29 20:22:23
+   */
+  const routerDetails = () => {
+    props.history.push('/clerical-doc-details')
+  }
+
   return (
     <PageContainer backgroundColor="#fff">
       <Searcher search={searchValue} />
       <Tab tab={tabData} change={tab => tabChange(tab)} />
       <WingBlank size="md">
-        <ListLi>
+        <ListLi onClick={() => routerDetails()}>
           <Flex justify="between">
             <div>
               <TagUi className="tag-primary">党政类</TagUi>
@@ -80,4 +96,4 @@ function SignFor() {
   )
 }
 
-export default SignFor
+export default withRouter(SignFor)

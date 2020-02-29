@@ -261,7 +261,7 @@ function PostCreate(props: PropsType) {
             arrow="horizontal"
           >
             <Flex>
-              <IconStyle className="m-r-10" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={19} height={19} />
               公文类型
             </Flex>
           </Item>
@@ -287,7 +287,7 @@ function PostCreate(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style" arrow="horizontal">
             <Flex>
-              <IconStyle className="m-r-10" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={19} height={19} />
               添加附件
             </Flex>
           </Item>
@@ -295,21 +295,21 @@ function PostCreate(props: PropsType) {
             <WingBlank>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-10">
+                <FontMm className="color-text-caption m-r-sm">
                   关于疫情防疫部署方案.docx
                 </FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-10">
+                <FontMm className="color-text-caption m-r-sm">
                   关于疫情防疫部署方案.docx
                 </FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-10">
+                <FontMm className="color-text-caption m-r-sm">
                   关于疫情防疫部署方案.docx
                 </FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
@@ -326,7 +326,7 @@ function PostCreate(props: PropsType) {
             extra={<FontMm>5人</FontMm>}
           >
             <Flex>
-              <IconStyle className="m-r-10" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={19} height={19} />
               接收人
             </Flex>
           </Item>
@@ -335,7 +335,7 @@ function PostCreate(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-10" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={19} height={19} />
               提交审批
             </Flex>
           </Item>

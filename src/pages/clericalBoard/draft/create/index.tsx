@@ -344,7 +344,7 @@ function DraftCreate(props: PropsType) {
             arrow="horizontal"
           >
             <Flex>
-              <IconStyle className="m-r-10" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={19} height={19} />
               公文模板
             </Flex>
           </Item>
@@ -355,7 +355,7 @@ function DraftCreate(props: PropsType) {
             arrow="horizontal"
           >
             <Flex>
-              <IconStyle className="m-r-10" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={19} height={19} />
               公文类型
             </Flex>
           </Item>
@@ -369,7 +369,7 @@ function DraftCreate(props: PropsType) {
             }
           >
             <Flex>
-              <IconStyle className="m-r-10" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={19} height={19} />
               文号
             </Flex>
           </Item>
@@ -404,7 +404,7 @@ function DraftCreate(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style" arrow="horizontal">
             <Flex>
-              <IconStyle className="m-r-10" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={19} height={19} />
               添加附件
             </Flex>
           </Item>
@@ -412,21 +412,21 @@ function DraftCreate(props: PropsType) {
             <WingBlank>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-10">
+                <FontMm className="color-text-caption m-r-sm">
                   关于疫情防疫部署方案.docx
                 </FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-10">
+                <FontMm className="color-text-caption m-r-sm">
                   关于疫情防疫部署方案.docx
                 </FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-10">
+                <FontMm className="color-text-caption m-r-sm">
                   关于疫情防疫部署方案.docx
                 </FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
@@ -439,7 +439,7 @@ function DraftCreate(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-10" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={19} height={19} />
               审核人
             </Flex>
           </Item>

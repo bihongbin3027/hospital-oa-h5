@@ -15,6 +15,7 @@ export const themesDefault = {
 
   // 边框色
   '@border-color-base': '#f1f1f3',
+  '@border-color-grey': '#757576',
 
   // 背景色
   '@color-icon-base': '#ccc',

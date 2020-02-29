@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
 import { WingBlank, Flex, Popover } from 'antd-mobile'
 import { Tab, TabType } from '../../../components/tab'
 import { TagUi } from '../../../style/baseUi'
@@ -14,7 +15,13 @@ import { normalImage } from '../../../utils/config'
 
 const Item = Popover.Item
 
-function Related() {
+interface PropsTypes {
+  history: {
+    push: (routeName: string) => void
+  }
+}
+
+function Related(props: PropsTypes) {
   const [tabData] = useState([
     {
       title: '审核',
@@ -40,18 +47,27 @@ function Related() {
     console.log('tab', tab)
   }
 
+  /**
+   * @description 跳转到详情
+   * @author biHongBin
+   * @Date 2020-02-29 20:22:23
+   */
+  const routerDetails = () => {
+    props.history.push('/clerical-doc-details')
+  }
+
   return (
     <PageContainer backgroundColor="#fff">
       <Tab tab={tabData} change={tab => tabChange(tab)} />
       <WingBlank size="md">
-        <ListLi>
+        <ListLi onClick={() => routerDetails()}>
           <Flex justify="between">
             <Flex>
-              <TagUi className="tag-fill m-r-10">拟稿</TagUi>
+              <TagUi className="tag-fill m-r-sm">拟稿</TagUi>
               <TagUi className="tag-primary">党政类</TagUi>
             </Flex>
             <Flex>
-              <FontMm className="brand-tension m-r-10">待审核</FontMm>
+              <FontMm className="brand-tension m-r-sm">待审核</FontMm>
               <Popover
                 visible={false}
                 overlay={[
@@ -125,4 +141,4 @@ function Related() {
   )
 }
 
-export default Related
+export default withRouter(Related)
