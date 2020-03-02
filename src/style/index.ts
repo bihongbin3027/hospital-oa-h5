@@ -31,6 +31,9 @@ export const Wrapper = styled.div`
   .color-text-delete {
     color: ${props => props.theme['@color-text-delete']};
   }
+  .color-text-fill {
+    color: ${props => props.theme['@color-text-fill']};
+  }
   .brand-primary {
     color: ${props => props.theme['@brand-primary']};
   }
@@ -146,6 +149,9 @@ export const Wrapper = styled.div`
   }
   .am-text-line {
     line-height: 19px;
+  }
+  .ms-white-space-inherit {
+    white-space: initial;
   }
 `
 

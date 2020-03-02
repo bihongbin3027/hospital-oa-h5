@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { fromJS } from 'immutable'
 import {
   WingBlank,
@@ -105,6 +105,10 @@ function DocDetails(props: PropsType) {
     })
   }
 
+  useEffect(() => {
+    document.title = '详情内容'
+  }, [])
+
   return (
     <Wrapper footer="50">
       <PageContainer>
@@ -200,7 +204,7 @@ function DocDetails(props: PropsType) {
           >
             <Flex>
               <IconStyle className="m-r-sm" width={19} height={19} />
-              传阅情况
+              传阅意见
             </Flex>
           </Item>
           <Accordion

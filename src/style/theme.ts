@@ -15,7 +15,9 @@ export const themesDefault = {
 
   // 边框色
   '@border-color-base': '#f1f1f3',
+  '@border-color-primary': '#497fc5',
   '@border-color-grey': '#757576',
+  '@border-color-delete': '#aa4f4f',
 
   // 背景色
   '@color-icon-base': '#ccc',
@@ -29,6 +31,7 @@ export const themesDefault = {
   // tag
   '@tag-primary': '#e2efff',
   '@tag-fill': '#ddf3f7',
+  '@tag-delete': '#aa4f4f',
   '@tag-active': '#497fc5',
   '@tag-grey': '#d1d1d1',
 }

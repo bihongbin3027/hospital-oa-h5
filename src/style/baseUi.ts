@@ -28,6 +28,7 @@ export const ButtonUi = styled.a`
 `
 
 export const TagUi = styled.div`
+  line-height: 1.15;
   padding: 2px 5px;
   border-radius: 2px;
   &.md {
@@ -36,6 +37,15 @@ export const TagUi = styled.div`
   &.tag-border-normal {
     border: 1px solid ${props => props.theme['@border-color-grey']};
   }
+  &.tag-border-fill {
+    border: 1px solid ${props => props.theme['@color-text-fill']};
+  }
+  &.tag-border-primary {
+    border: 1px solid ${props => props.theme['@border-color-primary']};
+  }
+  &.tag-border-delete {
+    border: 1px solid ${props => props.theme['@border-color-delete']};
+  }
   &.tag-grey {
     color: ${props => props.theme['@color-text-caption']};
     background: ${props => props.theme['@tag-grey']};
@@ -43,6 +53,10 @@ export const TagUi = styled.div`
   &.tag-fill {
     color: ${props => props.theme['@color-text-fill']};
     background: ${props => props.theme['@tag-fill']};
+  }
+  &.tag-delete {
+    color: #fff;
+    background: ${props => props.theme['@tag-delete']};
   }
   &.tag-primary {
     color: ${props => props.theme['@brand-primary']};

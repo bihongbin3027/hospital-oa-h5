@@ -53,7 +53,7 @@ function Related(props: PropsTypes) {
    * @Date 2020-02-29 20:22:23
    */
   const routerDetails = () => {
-    props.history.push('/clerical-doc-details')
+    props.history.push('/clerical-review-details/1')
   }
 
   return (
