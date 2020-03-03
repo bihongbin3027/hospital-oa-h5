@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { WingBlank, Flex, Popover } from 'antd-mobile'
-import { Tab, TabType } from '../../../components/tab'
-import { TagUi } from '../../../style/baseUi'
+import { Tab, TabType } from '@/components/tab'
+import { TagUi } from '@/style/baseUi'
 import {
   PageContainer,
   ListLi,
@@ -10,8 +10,8 @@ import {
   FontMd,
   FontMr,
   IconStyle,
-} from '../../../style'
-import { normalImage } from '../../../utils/config'
+} from '@/style'
+import { normalImage } from '@/utils/config'
 
 const Item = Popover.Item
 

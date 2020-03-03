@@ -2,8 +2,8 @@ import React, { useReducer } from 'react'
 import { fromJS } from 'immutable'
 import Workbench from './workbench/index'
 import Personal from './personal/index'
-import TabBarBox from '../../components/tabBarBox'
-import { normalImage } from '../../utils/config'
+import TabBarBox from '@/components/tabBarBox'
+import { normalImage } from '@/utils/config'
 
 interface StateType {
   set: (key: string, value: any) => any

@@ -7,7 +7,7 @@ import {
   FontXs,
   FontMm,
   FontMd,
-} from '../../../style'
+} from '@/style'
 import { Figures, AttendanceNumBox } from './style'
 
 const Item = List.Item

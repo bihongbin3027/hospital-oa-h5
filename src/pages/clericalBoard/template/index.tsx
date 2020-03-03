@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Flex } from 'antd-mobile'
 import { withRouter } from 'react-router-dom'
-import { TagUi } from '../../../style/baseUi'
-import FooterButtons from '../../../components/footerButtons'
-import { Wrapper, PageContainer, IconStyle, FontMd } from '../../../style'
+import { TagUi } from '@/style/baseUi'
+import FooterButtons from '@/components/footerButtons'
+import { Wrapper, PageContainer, IconStyle, FontMd } from '@/style'
 import { TempWrap } from './style'
 
 function SelectedTemplate(props: { history: any; match?: any }) {

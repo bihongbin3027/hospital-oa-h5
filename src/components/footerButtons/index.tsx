@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Flex } from 'antd-mobile'
-import { IconStyle, FontTiny } from '../../style'
+import { IconStyle, FontTiny } from '@/style'
 import { BackNextWrap } from './style'
 
 interface FootButtonType {

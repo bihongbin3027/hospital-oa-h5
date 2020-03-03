@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal, Flex, Toast } from 'antd-mobile'
-import { TagUi } from '../../style/baseUi'
+import { TagUi } from '@/style/baseUi'
 import { SelectTypeBox } from './style'
 
 interface ProsType {

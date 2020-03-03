@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { WingBlank, Flex } from 'antd-mobile'
-import { Tab, TabType } from '../../../components/tab'
-import { TagUi } from '../../../style/baseUi'
-import Searcher from '../../../components/searcher'
-import { PageContainer, ListLi, FontMm, FontMd } from '../../../style'
-import { normalImage } from '../../../utils/config'
+import { Tab, TabType } from '@/components/tab'
+import { TagUi } from '@/style/baseUi'
+import Searcher from '@/components/searcher'
+import { PageContainer, ListLi, FontMm, FontMd } from '@/style'
+import { normalImage } from '@/utils/config'
 
 interface PropsTypes {
   history: {

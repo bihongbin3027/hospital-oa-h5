@@ -2,9 +2,9 @@ import React, { useReducer } from 'react'
 import { Flex, Icon, DatePicker, Toast } from 'antd-mobile'
 import moment from 'moment'
 import { fromJS } from 'immutable'
-import { ButtonUi } from '../../style/baseUi'
-import { themesDefault } from '../../style/theme'
-import { FontMm } from '../../style'
+import { ButtonUi } from '@/style/baseUi'
+import { themesDefault } from '@/style/theme'
+import { FontMm } from '@/style'
 import { SearchWrap, SearchRange } from './style'
 
 const brand_primary = themesDefault['@brand-primary']

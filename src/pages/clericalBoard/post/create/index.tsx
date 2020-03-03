@@ -10,15 +10,9 @@ import {
   WingBlank,
   Modal,
 } from 'antd-mobile'
-import FooterButtons from '../../../../components/footerButtons'
-import SelectTypeModal from '../../../../components/selectTypeModal'
-import {
-  Wrapper,
-  PageContainer,
-  IconStyle,
-  FontMm,
-  AvatarArea,
-} from '../../../../style'
+import FooterButtons from '@/components/footerButtons'
+import SelectTypeModal from '@/components/selectTypeModal'
+import { Wrapper, PageContainer, IconStyle, FontMm, AvatarArea } from '@/style'
 
 const Item = List.Item
 const alert = Modal.alert

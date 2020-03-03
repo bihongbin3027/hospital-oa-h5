@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 import { withRouter } from 'react-router-dom'
 import { TabBar, Modal, Grid, Icon } from 'antd-mobile'
 import { fromJS } from 'immutable'
-import { Wrapper, IconStyle, NewlyOpenedBox } from '../../style'
+import { Wrapper, IconStyle, NewlyOpenedBox } from '@/style'
 
 interface StateType {
   set: (key: string, value: any) => any

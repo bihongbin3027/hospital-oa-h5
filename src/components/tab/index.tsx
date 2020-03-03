@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { Flex } from 'antd-mobile'
 import { fromJS } from 'immutable'
-import { FontMd } from '../../style'
+import { FontMd } from '@/style'
 import { TabWrap } from './style'
 
 interface StateType {

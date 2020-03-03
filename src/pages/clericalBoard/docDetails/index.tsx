@@ -10,15 +10,9 @@ import {
   Switch,
   TextareaItem,
 } from 'antd-mobile'
-import { TagUi } from '../../../style/baseUi'
-import FooterButtons from '../../../components/footerButtons'
-import {
-  Wrapper,
-  PageContainer,
-  FontMm,
-  FontMd,
-  IconStyle,
-} from '../../../style'
+import { TagUi } from '@/style/baseUi'
+import FooterButtons from '@/components/footerButtons'
+import { Wrapper, PageContainer, FontMm, FontMd, IconStyle } from '@/style'
 
 const Item = List.Item
 

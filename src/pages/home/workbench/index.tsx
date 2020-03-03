@@ -2,8 +2,8 @@ import React, { useReducer } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Grid, Flex, WingBlank, WhiteSpace } from 'antd-mobile'
 import { fromJS } from 'immutable'
-import { normalImage } from '../../../utils/config'
-import { PageContainer, GridBox, FontMd, FontXs } from '../../../style'
+import { normalImage } from '@/utils/config'
+import { PageContainer, GridBox, FontMd, FontXs } from '@/style'
 import {
   GridBoxBg,
   GridIcon,
