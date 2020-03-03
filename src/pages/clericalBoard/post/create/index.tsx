@@ -27,7 +27,7 @@ interface ActionType {
 }
 
 interface PropsType {
-  history: { goBack: () => void }
+  history: { goBack: () => void; push: (val: string) => void }
 }
 
 function reducer(state: StateType, action: ActionType) {
@@ -213,6 +213,15 @@ function PostCreate(props: PropsType) {
   }
 
   /**
+   * @description 选择接收人
+   * @author biHongBin
+   * @Date 2020-03-03 15:29:02
+   */
+  const handleReceiverSelect = () => {
+    props.history.push('/clerical-post-receiver')
+  }
+
+  /**
    * @description 渲染头像和区分添加人员按钮
    * @author biHongBin
    * @param {type}
@@ -234,9 +243,7 @@ function PostCreate(props: PropsType) {
             <IconStyle className="block-delete" width={21} height={21} />
             <IconStyle width={52} height={52} radius={6} />
             <Flex>
-              <FontMm className="avatar-name color-text-caption">
-                {dataItem.name}
-              </FontMm>
+              <FontMm className="avatar-name color-text-caption">{dataItem.name}</FontMm>
             </Flex>
           </div>
         </AvatarArea>
@@ -289,23 +296,17 @@ function PostCreate(props: PropsType) {
             <WingBlank>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-sm">
-                  关于疫情防疫部署方案.docx
-                </FontMm>
+                <FontMm className="color-text-caption m-r-sm">关于疫情防疫部署方案.docx</FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-sm">
-                  关于疫情防疫部署方案.docx
-                </FontMm>
+                <FontMm className="color-text-caption m-r-sm">关于疫情防疫部署方案.docx</FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-sm">
-                  关于疫情防疫部署方案.docx
-                </FontMm>
+                <FontMm className="color-text-caption m-r-sm">关于疫情防疫部署方案.docx</FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
@@ -318,6 +319,7 @@ function PostCreate(props: PropsType) {
             className="am-list-header-style"
             arrow="horizontal"
             extra={<FontMm>5人</FontMm>}
+            onClick={handleReceiverSelect}
           >
             <Flex>
               <IconStyle className="m-r-sm" width={19} height={19} />

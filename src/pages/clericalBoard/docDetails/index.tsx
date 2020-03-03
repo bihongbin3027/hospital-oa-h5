@@ -26,7 +26,7 @@ interface ActionType {
 }
 
 interface PropsType {
-  history: { goBack: () => void }
+  history: { goBack: () => void; push: (val: string) => void }
 }
 
 function reducer(state: StateType, action: ActionType) {
@@ -99,6 +99,24 @@ function DocDetails(props: PropsType) {
     })
   }
 
+  /**
+   * @description 查看接收人
+   * @author biHongBin
+   * @Date 2020-03-03 15:29:02
+   */
+  const handleReceiverSelect = () => {
+    props.history.push('/clerical-doc-receiver')
+  }
+
+  /**
+   * @description 查看签收情况
+   * @author biHongBin
+   * @Date 2020-03-03 17:35:53
+   */
+  const handleSignSituation = () => {
+    props.history.push('/clerical-doc-signFor')
+  }
+
   useEffect(() => {
     document.title = '详情内容'
   }, [])
@@ -120,9 +138,7 @@ function DocDetails(props: PropsType) {
             <FontMd>主题标题主题标题</FontMd>
             <WhiteSpace size="lg" />
             <Flex>
-              <TagUi className="tag-border-normal color-text-caption">
-                公共事件
-              </TagUi>
+              <TagUi className="tag-border-normal color-text-caption">公共事件</TagUi>
             </Flex>
             <WhiteSpace size="lg" />
             <FontMm className="am-text-line">
@@ -143,9 +159,7 @@ function DocDetails(props: PropsType) {
             <WingBlank>
               <WhiteSpace />
               <Flex justify="between">
-                <FontMm className="color-text-caption">
-                  关于疫情防疫部署方案.docx
-                </FontMm>
+                <FontMm className="color-text-caption">关于疫情防疫部署方案.docx</FontMm>
                 <Flex>
                   <FontMm className="color-text-caption m-r-sm">已读</FontMm>
                   <Icon type="right" color="#d5d5d5" />
@@ -153,9 +167,7 @@ function DocDetails(props: PropsType) {
               </Flex>
               <WhiteSpace />
               <Flex justify="between">
-                <FontMm className="color-text-caption">
-                  关于疫情防疫部署方案.docx
-                </FontMm>
+                <FontMm className="color-text-caption">关于疫情防疫部署方案.docx</FontMm>
                 <Flex>
                   <FontMm className="brand-error m-r-sm">未读</FontMm>
                   <Icon type="right" color="#d5d5d5" />
@@ -172,6 +184,7 @@ function DocDetails(props: PropsType) {
             className="am-list-header-style"
             arrow="horizontal"
             extra={<FontMm>{5}人</FontMm>}
+            onClick={handleReceiverSelect}
           >
             <Flex>
               <IconStyle className="m-r-sm" width={19} height={19} />
@@ -182,6 +195,7 @@ function DocDetails(props: PropsType) {
             className="am-list-header-style"
             arrow="horizontal"
             extra={<FontMm>已签收(3) 未签收(2)</FontMm>}
+            onClick={handleSignSituation}
           >
             <Flex>
               <IconStyle className="m-r-sm" width={19} height={19} />
@@ -191,37 +205,23 @@ function DocDetails(props: PropsType) {
         </List>
         <WhiteSpace />
         <List className="am-list-style">
-          <Item
-            className="am-list-header-style"
-            arrow="horizontal"
-            extra={<FontMm>{5}人</FontMm>}
-          >
+          <Item className="am-list-header-style" arrow="horizontal" extra={<FontMm>{5}人</FontMm>}>
             <Flex>
               <IconStyle className="m-r-sm" width={19} height={19} />
               传阅意见
             </Flex>
           </Item>
-          <Accordion
-            className="am-top-border-hidden am-bottom-border-hidden"
-            defaultActiveKey="0"
-          >
+          <Accordion className="am-top-border-hidden am-bottom-border-hidden" defaultActiveKey="0">
             <Accordion.Panel header={<FontMm>信息科</FontMm>}>
               <Item>
                 <WhiteSpace />
                 <Flex>
                   <Flex className="m-r-lg">
-                    <IconStyle
-                      className="m-r-sm"
-                      width={36}
-                      height={36}
-                      radius={36}
-                    />
+                    <IconStyle className="m-r-sm" width={36} height={36} radius={36} />
                     <div>
                       <Flex>
                         <FontMm className="m-r-sm">李四</FontMm>
-                        <FontMm className="color-text-caption">
-                          2020-20-19 16:00
-                        </FontMm>
+                        <FontMm className="color-text-caption">2020-20-19 16:00</FontMm>
                       </Flex>
                       <FontMm>非常好，同意</FontMm>
                     </div>
