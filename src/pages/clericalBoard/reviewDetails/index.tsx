@@ -3,6 +3,7 @@ import { fromJS } from 'immutable'
 import { WingBlank, WhiteSpace, Flex, List, Icon, Accordion, TextareaItem } from 'antd-mobile'
 import { TagUi } from '@/style/baseUi'
 import FooterButtons from '@/components/footerButtons'
+import { annexListIcon, backFootIcon, receiverListIcon, reviewListIcon } from '@/utils/config'
 import { Wrapper, PageContainer, FontMm, FontMd, IconStyle } from '@/style'
 
 const Item = List.Item
@@ -53,7 +54,7 @@ function ReviewDetails(props: PropsType) {
       // 底部footer数据
       footData: [
         {
-          icon: '',
+          icon: backFootIcon,
           text: '返回',
           textColor: 'color-text-caption',
           click: () => {
@@ -140,7 +141,7 @@ function ReviewDetails(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={annexListIcon} />
               附件
             </Flex>
           </Item>
@@ -170,16 +171,16 @@ function ReviewDetails(props: PropsType) {
             onClick={handleReceiverSelect}
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={receiverListIcon} />
               接收人
             </Flex>
           </Item>
         </List>
         <WhiteSpace />
         <List className="am-list-style">
-          <Item className="am-list-header-style" arrow="horizontal" extra={<FontMm>{5}人</FontMm>}>
+          <Item className="am-list-header-style" extra={<FontMm>{5}人</FontMm>}>
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={reviewListIcon} />
               审批情况
             </Flex>
           </Item>

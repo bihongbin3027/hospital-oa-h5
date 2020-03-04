@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Modal, Flex, Toast } from 'antd-mobile'
 import { TagUi } from '@/style/baseUi'
+import { IconStyle } from '@/style'
+import { closeModalIcon } from '@/utils/config'
 import { SelectTypeBox } from './style'
 
 interface ProsType {
@@ -14,46 +16,26 @@ interface ProsType {
 function SelectTypeModal(props: ProsType) {
   const [selected, setSelected] = useState({ name: '' })
 
+  const handleSelectItem = (item: any) => {
+    setSelected(item)
+    props.confirm(item)
+  }
+
   return (
-    <Modal
-      title={props.title}
-      visible={props.visible}
-      closable
-      transparent
-      onClose={props.cancel}
-      footer={[
-        {
-          text: '取消',
-          onPress: () => {
-            props.cancel()
-          },
-        },
-        {
-          text: '确定',
-          onPress: () => {
-            if (!selected.name) {
-              Toast.info(props.title, 1.5)
-              return
-            }
-            props.confirm(selected)
-          },
-        },
-      ]}
-    >
+    <Modal title={props.title} popup visible={props.visible} animationType="slide-up">
       <SelectTypeBox>
         <Flex>
           {props.data.map((item, index) => (
             <TagUi
-              className={`tag-grey md ${
-                item.name === selected.name ? 'tag-active' : ''
-              }`}
-              onClick={() => setSelected(item)}
+              className={`tag-grey md ${item.name === selected.name ? 'tag-active' : ''}`}
+              onClick={() => handleSelectItem(item)}
               key={index}
             >
               {item.name}
             </TagUi>
           ))}
         </Flex>
+        <IconStyle width={64} height={64} icon={closeModalIcon} onClick={() => props.cancel()} />
       </SelectTypeBox>
     </Modal>
   )

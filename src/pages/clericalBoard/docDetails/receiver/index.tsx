@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react'
 import { fromJS } from 'immutable'
 import { WhiteSpace, Flex, List, Grid, Accordion } from 'antd-mobile'
 import FooterButtons from '@/components/footerButtons'
+import { receiverListIcon, backFootIcon } from '@/utils/config'
 import { Wrapper, PageContainer, IconStyle, AvatarArea, FontMm } from '@/style'
 
 const Item = List.Item
@@ -50,7 +51,7 @@ function Receiver(props: PropsType) {
       // 底部footer数据
       footData: [
         {
-          icon: '',
+          icon: backFootIcon,
           text: '返回',
           textColor: 'color-text-caption',
           click: () => {
@@ -86,7 +87,7 @@ function Receiver(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-sm" width={16} height={16} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={receiverListIcon} />
               接收人（1）
             </Flex>
           </Item>

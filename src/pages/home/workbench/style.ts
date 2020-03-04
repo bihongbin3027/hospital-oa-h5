@@ -60,10 +60,3 @@ export const AgentLi = styled.li`
     margin-top: 16px;
   }
 `
-
-export const AgentIcon = styled.i`
-  width: 20px;
-  height: 20px;
-  background-color: ${(props: { src: string }) => props.src};
-  margin-right: 12px;
-`

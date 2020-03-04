@@ -19,12 +19,7 @@ function FooterButtons(props: any) {
           <Flex.Item onClick={item.click} key={index}>
             <Flex className="bw-btn" justify="center">
               {item.icon ? (
-                <IconStyle
-                  className="m-r-sm"
-                  width={24}
-                  height={24}
-                  icon={item.icon}
-                />
+                <IconStyle className="m-r-xs" width={24} height={24} icon={item.icon} />
               ) : null}
               <FontTiny className={item.textColor}>{item.text}</FontTiny>
             </Flex>

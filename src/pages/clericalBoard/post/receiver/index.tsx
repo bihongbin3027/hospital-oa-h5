@@ -2,6 +2,13 @@ import React, { useReducer, useEffect } from 'react'
 import { fromJS } from 'immutable'
 import { WhiteSpace, Flex, List, Grid } from 'antd-mobile'
 import FooterButtons from '@/components/footerButtons'
+import {
+  receiverListIcon,
+  avatarAddIcon,
+  avatarCloseIcon,
+  backFootIcon,
+  confirmFootIcon,
+} from '@/utils/config'
 import { Wrapper, PageContainer, IconStyle, AvatarArea, FontMm } from '@/style'
 
 const Item = List.Item
@@ -49,7 +56,7 @@ function Receiver(props: PropsType) {
       // 底部footer数据
       footData: [
         {
-          icon: '',
+          icon: backFootIcon,
           text: '返回',
           textColor: 'color-text-caption',
           click: () => {
@@ -57,7 +64,7 @@ function Receiver(props: PropsType) {
           },
         },
         {
-          icon: '',
+          icon: confirmFootIcon,
           text: '确定',
           textColor: 'brand-primary',
           click: () => {
@@ -75,7 +82,7 @@ function Receiver(props: PropsType) {
       return (
         <AvatarArea>
           <div className="avatar-box add-avatar">
-            <IconStyle width={32} height={32} radius={4} />
+            <IconStyle width={32} height={32} radius={4} icon={avatarAddIcon} />
           </div>
         </AvatarArea>
       )
@@ -83,7 +90,7 @@ function Receiver(props: PropsType) {
       return (
         <AvatarArea>
           <div className="avatar-box">
-            <IconStyle className="block-delete" width={21} height={21} />
+            <IconStyle className="block-delete" width={24} height={24} icon={avatarCloseIcon} />
             <IconStyle width={52} height={52} radius={6} />
             <Flex>
               <FontMm className="avatar-name color-text-caption">{dataItem.name}</FontMm>
@@ -104,7 +111,7 @@ function Receiver(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-sm" width={16} height={16} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={receiverListIcon} />
               接收人（1）
             </Flex>
           </Item>

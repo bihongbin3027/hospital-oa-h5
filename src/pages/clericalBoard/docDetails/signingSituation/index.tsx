@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react'
 import { fromJS } from 'immutable'
 import { WhiteSpace, Flex, List, Grid, Accordion, Tabs } from 'antd-mobile'
 import FooterButtons from '@/components/footerButtons'
+import { backFootIcon } from '@/utils/config'
 import { Wrapper, PageContainer, IconStyle, AvatarArea, FontMm } from '@/style'
 
 const Item = List.Item
@@ -52,7 +53,7 @@ function SignSituation(props: PropsType) {
       // 底部footer数据
       footData: [
         {
-          icon: '',
+          icon: backFootIcon,
           text: '返回',
           textColor: 'color-text-caption',
           click: () => {

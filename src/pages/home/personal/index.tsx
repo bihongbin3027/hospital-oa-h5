@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
 import { Grid, Flex, WingBlank, WhiteSpace, Icon, List } from 'antd-mobile'
-import {
-  PageContainer,
-  GridBox,
-  GridBoxHeader,
-  FontXs,
-  FontMm,
-  FontMd,
-} from '@/style'
+import { PageContainer, GridBox, GridBoxHeader, FontXs, FontMm, FontMd } from '@/style'
+import { personTagIcon, paycheckIcon } from '@/utils/config'
 import { Figures, AttendanceNumBox } from './style'
 
 const Item = List.Item
@@ -68,12 +62,8 @@ function Personal() {
                 hasLine={false}
                 renderItem={(dataItem: any) => (
                   <>
-                    <Figures className={`figures ${dataItem.numColor}`}>
-                      {dataItem.num}
-                    </Figures>
-                    <FontMm className={dataItem.textColor}>
-                      {dataItem.text}
-                    </FontMm>
+                    <Figures className={`figures ${dataItem.numColor}`}>{dataItem.num}</Figures>
+                    <FontMm className={dataItem.textColor}>{dataItem.text}</FontMm>
                   </>
                 )}
               />
@@ -82,16 +72,10 @@ function Personal() {
         </GridBox>
         <WhiteSpace size="xl" />
         <List>
-          <Item
-            thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-            arrow="horizontal"
-          >
+          <Item thumb={personTagIcon} arrow="horizontal">
             人员标签
           </Item>
-          <Item
-            thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-            arrow="horizontal"
-          >
+          <Item thumb={paycheckIcon} arrow="horizontal">
             工资查看
           </Item>
         </List>

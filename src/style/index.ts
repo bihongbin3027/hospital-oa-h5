@@ -194,6 +194,7 @@ export const IconStyle = styled.span`
   height: ${(props: IconProps) => (props.height ? props.height + 'px' : '20px')};
   border-radius: ${(props: IconProps) => (props.radius ? props.radius + 'px' : 0)};
   background-image: url(${(props: IconProps) => (props.icon ? props.icon : normalImage)});
+  background-repeat: no-repeat;
   background-size: contain;
 `
 
@@ -242,8 +243,8 @@ export const NewlyOpenedBox = styled.div`
   min-height: 225px;
   padding: 20px 10px;
   .entrance-icon {
-    width: 26px;
-    height: 26px;
+    width: 45px;
+    height: 45px;
   }
   ~ .cross-circle {
     margin-top: 15px;

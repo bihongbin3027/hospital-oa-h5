@@ -3,7 +3,16 @@ import { fromJS } from 'immutable'
 import Workbench from './workbench/index'
 import Personal from './personal/index'
 import TabBarBox from '@/components/tabBarBox'
-import { normalImage } from '@/utils/config'
+import {
+  addIcon,
+  workbenchIcon,
+  workbenchActiveIcon,
+  personalIcon,
+  personalActiveIcon,
+  postDocumentIcon,
+  timeAttendanceIcon,
+  initiateApprovalIcon,
+} from '@/utils/config'
 
 interface StateType {
   set: (key: string, value: any) => any
@@ -34,40 +43,35 @@ function Home() {
         {
           components: <Workbench />,
           title: '工作台',
-          icon:
-            'https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg',
-          selectedIcon:
-            'https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg',
+          icon: workbenchIcon,
+          selectedIcon: workbenchActiveIcon,
         },
         {
           title: '',
-          icon:
-            'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg',
+          icon: addIcon,
         },
         {
           components: <Personal />,
           title: '我的',
-          icon:
-            'https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg',
-          selectedIcon:
-            'https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg',
+          icon: personalIcon,
+          selectedIcon: personalActiveIcon,
         },
       ],
       // 底部动作面板数据
       newlyOpenedData: [
         {
           route: '',
-          icon: normalImage,
+          icon: postDocumentIcon,
           text: '发布公文',
         },
         {
           route: '',
-          icon: normalImage,
+          icon: timeAttendanceIcon,
           text: '考勤打卡',
         },
         {
           route: '',
-          icon: normalImage,
+          icon: initiateApprovalIcon,
           text: '发起审批',
         },
       ],
@@ -76,13 +80,7 @@ function Home() {
 
   const { normalSelect, tabBarData, newlyOpenedData } = data.toJS()
 
-  return (
-    <TabBarBox
-      selected={normalSelect}
-      tabBar={tabBarData}
-      actionSheet={newlyOpenedData}
-    />
-  )
+  return <TabBarBox selected={normalSelect} tabBar={tabBarData} actionSheet={newlyOpenedData} />
 }
 
 export default Home

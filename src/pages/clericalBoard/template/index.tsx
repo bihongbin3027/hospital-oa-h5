@@ -4,12 +4,13 @@ import { withRouter } from 'react-router-dom'
 import { TagUi } from '@/style/baseUi'
 import FooterButtons from '@/components/footerButtons'
 import { Wrapper, PageContainer, IconStyle, FontMd } from '@/style'
+import { personTagIcon, backFootIcon, nextFootIcon } from '@/utils/config'
 import { TempWrap } from './style'
 
 function SelectedTemplate(props: { history: any; match?: any }) {
   const [footData] = useState([
     {
-      icon: '',
+      icon: backFootIcon,
       text: '返回',
       textColor: 'color-text-caption',
       click: () => {
@@ -17,7 +18,7 @@ function SelectedTemplate(props: { history: any; match?: any }) {
       },
     },
     {
-      icon: '',
+      icon: nextFootIcon,
       text: '下一步',
       textColor: 'brand-primary',
       click: () => {
@@ -48,7 +49,7 @@ function SelectedTemplate(props: { history: any; match?: any }) {
       <PageContainer backgroundColor="#fff">
         <TempWrap>
           <Flex className="temp-line" align="start">
-            <IconStyle className="temp-icon" width={19} height={19} />
+            <IconStyle className="temp-icon" width={20} height={20} icon={personTagIcon} />
             <div className="temp-box">
               <FontMd className="temp-title">请选择公文模板</FontMd>
               <Flex className="temp-tag">
@@ -62,7 +63,7 @@ function SelectedTemplate(props: { history: any; match?: any }) {
             </div>
           </Flex>
           <Flex className="temp-line" align="start">
-            <IconStyle className="temp-icon" width={19} height={19} />
+            <IconStyle className="temp-icon" width={20} height={20} icon={personTagIcon} />
             <div className="temp-box">
               <FontMd className="temp-title">请选择公文类型</FontMd>
               <Flex className="temp-tag">

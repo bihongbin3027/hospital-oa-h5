@@ -28,11 +28,6 @@ export const TabWrap = styled.div`
         z-index: 1;
       }
     }
-    img {
-      width: 18px;
-      height: 18px;
-      margin-right: 6px;
-    }
     .color-text-secondary {
       margin-left: 6px;
     }

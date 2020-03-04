@@ -1,8 +1,9 @@
 import React, { useEffect, useReducer } from 'react'
 import { withRouter } from 'react-router-dom'
-import { TabBar, Modal, Grid, Icon } from 'antd-mobile'
+import { TabBar, Modal, Grid } from 'antd-mobile'
 import { fromJS } from 'immutable'
-import { Wrapper, IconStyle, NewlyOpenedBox } from '@/style'
+import { closeModalIcon } from '@/utils/config'
+import { Wrapper, IconStyle, NewlyOpenedBox, FontXs } from '@/style'
 
 interface StateType {
   set: (key: string, value: any) => any
@@ -44,12 +45,7 @@ function TabBarBox(props: any) {
     }),
   )
 
-  const {
-    selectedTab,
-    tabBarData,
-    newlyOpenedModal,
-    newlyOpenedData,
-  } = data.toJS()
+  const { selectedTab, tabBarData, newlyOpenedModal, newlyOpenedData } = data.toJS()
 
   /**
    * @description tab界面渲染
@@ -120,10 +116,14 @@ function TabBarBox(props: any) {
               title={item.title}
               key={index}
               selected={item.title === selectedTab}
-              icon={<IconStyle width={22} height={22} icon={item.icon} />}
-              selectedIcon={
-                <IconStyle width={22} height={22} icon={item.selectedIcon} />
+              icon={
+                item.title ? (
+                  <IconStyle width={24} height={24} icon={item.icon} />
+                ) : (
+                  <IconStyle width={32} height={32} icon={item.icon} />
+                )
               }
+              selectedIcon={<IconStyle width={24} height={24} icon={item.selectedIcon} />}
               onPress={() => handleSelectedIcon(item.title)}
             >
               {renderContent(item.components)}
@@ -147,21 +147,16 @@ function TabBarBox(props: any) {
                 className="am-grid-item-inner-content"
                 onClick={() => handleOpenRoute(dataItem.route)}
               >
-                <img
-                  className="entrance-icon"
-                  src={dataItem.icon}
-                  alt={dataItem.text}
-                />
-                <div className="am-grid-text">{dataItem.text}</div>
+                <img className="entrance-icon" src={dataItem.icon} alt={dataItem.text} />
+                <FontXs>{dataItem.text}</FontXs>
               </div>
             )}
           />
         </NewlyOpenedBox>
-        <Icon
-          className="cross-circle"
-          type="cross-circle"
-          size="lg"
-          color="#bbb"
+        <IconStyle
+          width={64}
+          height={64}
+          icon={closeModalIcon}
           onClick={() => handleNewlyOpenedModal()}
         />
       </Modal>

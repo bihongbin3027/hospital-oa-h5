@@ -12,6 +12,16 @@ import {
 } from 'antd-mobile'
 import FooterButtons from '@/components/footerButtons'
 import SelectTypeModal from '@/components/selectTypeModal'
+import {
+  personTagIcon,
+  annexListIcon,
+  reviewListIcon,
+  avatarCloseIcon,
+  avatarAddIcon,
+  draftFootIcon,
+  releaseFootIcon,
+  receiverListIcon,
+} from '@/utils/config'
 import { Wrapper, PageContainer, IconStyle, FontMm, AvatarArea } from '@/style'
 
 const Item = List.Item
@@ -91,7 +101,7 @@ function PostCreate(props: PropsType) {
       // 底部footer数据
       footData: [
         {
-          icon: '',
+          icon: draftFootIcon,
           text: '存为草稿',
           textColor: 'color-text-caption',
           click: () => {
@@ -112,7 +122,7 @@ function PostCreate(props: PropsType) {
           },
         },
         {
-          icon: '',
+          icon: releaseFootIcon,
           text: '发布',
           textColor: 'brand-primary',
           click: () => {
@@ -232,7 +242,7 @@ function PostCreate(props: PropsType) {
       return (
         <AvatarArea>
           <div className="avatar-box add-avatar">
-            <IconStyle width={32} height={32} radius={4} />
+            <IconStyle width={32} height={32} radius={4} icon={avatarAddIcon} />
           </div>
         </AvatarArea>
       )
@@ -240,7 +250,7 @@ function PostCreate(props: PropsType) {
       return (
         <AvatarArea>
           <div className="avatar-box">
-            <IconStyle className="block-delete" width={21} height={21} />
+            <IconStyle className="block-delete" width={24} height={24} icon={avatarCloseIcon} />
             <IconStyle width={52} height={52} radius={6} />
             <Flex>
               <FontMm className="avatar-name color-text-caption">{dataItem.name}</FontMm>
@@ -262,7 +272,7 @@ function PostCreate(props: PropsType) {
             arrow="horizontal"
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={personTagIcon} />
               公文类型
             </Flex>
           </Item>
@@ -288,7 +298,7 @@ function PostCreate(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style" arrow="horizontal">
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={annexListIcon} />
               添加附件
             </Flex>
           </Item>
@@ -322,7 +332,7 @@ function PostCreate(props: PropsType) {
             onClick={handleReceiverSelect}
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={receiverListIcon} />
               接收人
             </Flex>
           </Item>
@@ -331,7 +341,7 @@ function PostCreate(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={reviewListIcon} />
               提交审批
             </Flex>
           </Item>

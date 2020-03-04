@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { Flex } from 'antd-mobile'
 import { fromJS } from 'immutable'
-import { FontMd } from '@/style'
+import { FontMd, IconStyle } from '@/style'
 import { TabWrap } from './style'
 
 interface StateType {
@@ -61,7 +61,7 @@ function Tabs(props: ProsType) {
             key={index}
           >
             <Flex justify="center">
-              <img src={icon} alt={title} />
+              <IconStyle className="m-r-xs" width={24} height={24} icon={icon} />
               <FontMd>{title}</FontMd>
               <FontMd className="color-text-secondary">{num}</FontMd>
             </Flex>

@@ -12,6 +12,16 @@ import {
 } from 'antd-mobile'
 import { TagUi } from '@/style/baseUi'
 import FooterButtons from '@/components/footerButtons'
+import {
+  annexListIcon,
+  withdrawIcon,
+  backFootIcon,
+  receiverListIcon,
+  signListIcon,
+  circulateListIcon,
+  clearIcon,
+  releaseIcon,
+} from '@/utils/config'
 import { Wrapper, PageContainer, FontMm, FontMd, IconStyle } from '@/style'
 
 const Item = List.Item
@@ -49,7 +59,7 @@ function DocDetails(props: PropsType) {
       // 底部footer数据
       footData: [
         {
-          icon: '',
+          icon: backFootIcon,
           text: '返回',
           textColor: 'color-text-caption',
           click: () => {
@@ -151,7 +161,7 @@ function DocDetails(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={annexListIcon} />
               附件
             </Flex>
           </Item>
@@ -187,7 +197,7 @@ function DocDetails(props: PropsType) {
             onClick={handleReceiverSelect}
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={receiverListIcon} />
               接收人
             </Flex>
           </Item>
@@ -198,7 +208,7 @@ function DocDetails(props: PropsType) {
             onClick={handleSignSituation}
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={signListIcon} />
               签收情况
             </Flex>
           </Item>
@@ -207,7 +217,7 @@ function DocDetails(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style" arrow="horizontal" extra={<FontMm>{5}人</FontMm>}>
             <Flex>
-              <IconStyle className="m-r-sm" width={19} height={19} />
+              <IconStyle className="m-r-sm" width={20} height={20} icon={circulateListIcon} />
               传阅意见
             </Flex>
           </Item>
@@ -227,8 +237,8 @@ function DocDetails(props: PropsType) {
                     </div>
                   </Flex>
                   <Flex>
-                    <IconStyle className="m-r-xs" width={10} height={10} />
-                    <FontMm>撤回</FontMm>
+                    <IconStyle className="m-r-xs" width={18} height={18} icon={withdrawIcon} />
+                    <FontMm className="color-text-caption">撤回</FontMm>
                   </Flex>
                 </Flex>
                 <WhiteSpace />
@@ -264,11 +274,11 @@ function DocDetails(props: PropsType) {
           <Item>
             <Flex justify="end">
               <Flex className="m-r-lg" onClick={() => clearOpinionContent()}>
-                <IconStyle width={10} height={10} />
+                <IconStyle width={18} height={18} icon={clearIcon} />
                 <FontMm className="color-text-caption">清空</FontMm>
               </Flex>
               <Flex>
-                <IconStyle width={10} height={10} />
+                <IconStyle width={18} height={18} icon={releaseIcon} />
                 <FontMm className="brand-primary">发布</FontMm>
               </Flex>
             </Flex>

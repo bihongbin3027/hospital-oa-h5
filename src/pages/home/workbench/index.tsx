@@ -2,16 +2,16 @@ import React, { useReducer } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Grid, Flex, WingBlank, WhiteSpace } from 'antd-mobile'
 import { fromJS } from 'immutable'
-import { normalImage } from '@/utils/config'
-import { PageContainer, GridBox, FontMd, FontXs } from '@/style'
 import {
-  GridBoxBg,
-  GridIcon,
-  AgentBox,
-  AgentUl,
-  AgentLi,
-  AgentIcon,
-} from './style'
+  officialDocumentIcon,
+  attendanceIcon,
+  scheduleIcon,
+  approvalIcon,
+  adTypeIcon,
+  odTypeIcon,
+} from '@/utils/config'
+import { PageContainer, GridBox, FontMd, FontXs, IconStyle } from '@/style'
+import { GridBoxBg, GridIcon, AgentBox, AgentUl, AgentLi } from './style'
 
 interface StateType {
   set: (key: string, value: any) => any
@@ -39,19 +39,19 @@ function Workbench(props: any) {
         {
           route: '/clerical-board',
           text: '公文收发',
-          icon: normalImage,
+          icon: officialDocumentIcon,
         },
         {
           text: '考勤管理',
-          icon: normalImage,
+          icon: attendanceIcon,
         },
         {
           text: '排班管理',
-          icon: normalImage,
+          icon: scheduleIcon,
         },
         {
           text: '审批流程',
-          icon: normalImage,
+          icon: approvalIcon,
         },
       ],
     }),
@@ -100,31 +100,27 @@ function Workbench(props: any) {
           </FontMd>
           <AgentUl>
             <AgentLi>
-              <AgentIcon src="#888" />
+              <IconStyle className="m-r-sm" width={28} height={28} icon={adTypeIcon} />
               <div className="agent-text">
                 <Flex justify="between">
                   <FontMd>公文收发</FontMd>
                   <FontXs className="brand-tension">待签收</FontXs>
                 </Flex>
                 <Flex justify="between">
-                  <FontXs className="color-text-caption">
-                    1822张山-信息科
-                  </FontXs>
+                  <FontXs className="color-text-caption">1822张山-信息科</FontXs>
                   <FontXs className="color-text-caption">2020-02-05</FontXs>
                 </Flex>
               </div>
             </AgentLi>
             <AgentLi>
-              <AgentIcon src="orange" />
+              <IconStyle className="m-r-sm" width={28} height={28} icon={odTypeIcon} />
               <div className="agent-text">
                 <Flex justify="between">
                   <FontMd>考勤申诉</FontMd>
                   <FontXs className="brand-tension">待签收</FontXs>
                 </Flex>
                 <Flex justify="between">
-                  <FontXs className="color-text-caption">
-                    1822张山-信息科
-                  </FontXs>
+                  <FontXs className="color-text-caption">1822张山-信息科</FontXs>
                   <FontXs className="color-text-caption">2020-02-05</FontXs>
                 </Flex>
               </div>

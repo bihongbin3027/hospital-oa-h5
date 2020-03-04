@@ -4,7 +4,8 @@ import moment from 'moment'
 import { fromJS } from 'immutable'
 import { ButtonUi } from '@/style/baseUi'
 import { themesDefault } from '@/style/theme'
-import { FontMm } from '@/style'
+import { searchMenuIcon } from '@/utils/config'
+import { FontMm, IconStyle } from '@/style'
 import { SearchWrap, SearchRange } from './style'
 
 const brand_primary = themesDefault['@brand-primary']
@@ -51,14 +52,7 @@ function Searcher(props: PropsTypes) {
     }),
   )
 
-  const {
-    searchValue,
-    menuVisible,
-    cleanIconVisible,
-    maxDate,
-    startDate,
-    endDate,
-  } = data.toJS()
+  const { searchValue, menuVisible, cleanIconVisible, maxDate, startDate, endDate } = data.toJS()
 
   /**
    * @description 打开或关闭搜索条件
@@ -149,7 +143,13 @@ function Searcher(props: PropsTypes) {
   return (
     <SearchWrap>
       <Flex className="search-top">
-        <div className="search-menu" onClick={handleMenu} />
+        <IconStyle
+          className="m-r-sm"
+          width={20}
+          height={20}
+          icon={searchMenuIcon}
+          onClick={handleMenu}
+        />
         <div className="search-input">
           <input
             type="text"
@@ -158,23 +158,10 @@ function Searcher(props: PropsTypes) {
             placeholder="输入关键字"
           />
           <Flex className="search-icon">
-            <Flex
-              className="clean"
-              style={{ display: cleanIconVisible ? 'flex' : 'none' }}
-            >
-              <Icon
-                onClick={handleClearValue}
-                type="cross"
-                size="xs"
-                color="#fff"
-              />
+            <Flex className="clean" style={{ display: cleanIconVisible ? 'flex' : 'none' }}>
+              <Icon onClick={handleClearValue} type="cross" size="xs" color="#fff" />
             </Flex>
-            <Icon
-              type="search"
-              size="md"
-              color={brand_primary}
-              onClick={submit}
-            />
+            <Icon type="search" size="md" color={brand_primary} onClick={submit} />
           </Flex>
         </div>
       </Flex>
@@ -214,9 +201,7 @@ function Searcher(props: PropsTypes) {
         </Flex>
         <Flex className="range-footer" justify="end">
           <div>
-            <ButtonUi className="button-inline color-text-caption">
-              清空
-            </ButtonUi>
+            <ButtonUi className="button-inline color-text-caption">清空</ButtonUi>
             <ButtonUi className="button-primary button-inline" onClick={submit}>
               查询
             </ButtonUi>

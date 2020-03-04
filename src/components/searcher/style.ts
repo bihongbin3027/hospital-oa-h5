@@ -6,13 +6,6 @@ export const SearchWrap = styled.div`
     padding: 10px;
     background-color: ${props => props.theme['@brand-primary']};
   }
-  .search-menu {
-    width: 20px;
-    height: 20px;
-    flex: 0 0 20px;
-    background-color: #fff;
-    margin-right: 15px;
-  }
   .search-input {
     flex: 1;
     position: relative;
@@ -33,7 +26,7 @@ export const SearchWrap = styled.div`
       bottom: 0;
       padding-left: 5px;
       padding-right: 5px;
-      z-index: 1;
+      z-index: 2;
     }
     .clean {
       margin-right: 10px;
