@@ -34,6 +34,9 @@ export const TagUi = styled.div`
   &.md {
     padding: 3px 9px;
   }
+  &.ml {
+    padding: 4px 10px;
+  }
   &.tag-border-normal {
     border: 1px solid ${props => props.theme['@border-color-grey']};
   }

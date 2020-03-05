@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal, Flex, Toast } from 'antd-mobile'
+import { Modal, Flex, List } from 'antd-mobile'
 import { TagUi } from '@/style/baseUi'
 import { IconStyle } from '@/style'
 import { closeModalIcon } from '@/utils/config'
@@ -22,21 +22,23 @@ function SelectTypeModal(props: ProsType) {
   }
 
   return (
-    <Modal title={props.title} popup visible={props.visible} animationType="slide-up">
-      <SelectTypeBox>
-        <Flex>
-          {props.data.map((item, index) => (
-            <TagUi
-              className={`tag-grey md ${item.name === selected.name ? 'tag-active' : ''}`}
-              onClick={() => handleSelectItem(item)}
-              key={index}
-            >
-              {item.name}
-            </TagUi>
-          ))}
-        </Flex>
+    <Modal popup visible={props.visible} onClose={props.cancel} animationType="slide-up">
+      <List renderHeader={() => <div>{props.title}</div>}>
+        <SelectTypeBox>
+          <Flex>
+            {props.data.map((item, index) => (
+              <TagUi
+                className={`tag-grey ml ${item.name === selected.name ? 'tag-active' : ''}`}
+                onClick={() => handleSelectItem(item)}
+                key={index}
+              >
+                {item.name}
+              </TagUi>
+            ))}
+          </Flex>
+        </SelectTypeBox>
         <IconStyle width={64} height={64} icon={closeModalIcon} onClick={() => props.cancel()} />
-      </SelectTypeBox>
+      </List>
     </Modal>
   )
 }

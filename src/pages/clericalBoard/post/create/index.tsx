@@ -10,6 +10,7 @@ import {
   WingBlank,
   Modal,
 } from 'antd-mobile'
+import AnnexModal from '@/components/annexModal'
 import FooterButtons from '@/components/footerButtons'
 import SelectTypeModal from '@/components/selectTypeModal'
 import {
@@ -54,6 +55,8 @@ function reducer(state: StateType, action: ActionType) {
       return state.set('inputTheme', action.value)
     case 'changeInputThemeContent':
       return state.set('inputThemeContent', action.value)
+    case 'changeAnnexVisible':
+      return state.set('annexVisible', action.value)
     default:
       return state
   }
@@ -98,6 +101,7 @@ function PostCreate(props: PropsType) {
           icon: '',
         },
       ],
+      annexVisible: false, // 附件弹窗
       // 底部footer数据
       footData: [
         {
@@ -142,6 +146,7 @@ function PostCreate(props: PropsType) {
     inputTheme,
     inputThemeContent,
     approverData,
+    annexVisible,
     footData,
   } = data.toJS()
 
@@ -201,7 +206,6 @@ function PostCreate(props: PropsType) {
    */
   const handleConfirmSelectModal = (data: object) => {
     const { value } = selectModalTitle
-    handleCancelSelectModal()
     if (value === 'type') {
       dispatch({
         type: 'changeTypeValue',
@@ -229,6 +233,19 @@ function PostCreate(props: PropsType) {
    */
   const handleReceiverSelect = () => {
     props.history.push('/clerical-post-receiver')
+  }
+
+  /**
+   * @description 打开或关闭选择附件弹窗
+   * @author biHongBin
+   * @param { Boolean } data
+   * @Date 2020-03-04 11:35:01
+   */
+  const handleAnnexVisible = (data: boolean = false) => {
+    dispatch({
+      type: 'changeAnnexVisible',
+      value: data,
+    })
   }
 
   /**
@@ -296,7 +313,11 @@ function PostCreate(props: PropsType) {
         </List>
         <WhiteSpace />
         <List className="am-list-style">
-          <Item className="am-list-header-style" arrow="horizontal">
+          <Item
+            className="am-list-header-style"
+            arrow="horizontal"
+            onClick={() => handleAnnexVisible(true)}
+          >
             <Flex>
               <IconStyle className="m-r-sm" width={20} height={20} icon={annexListIcon} />
               添加附件
@@ -358,6 +379,7 @@ function PostCreate(props: PropsType) {
         </List>
         <WhiteSpace />
       </PageContainer>
+      <AnnexModal visible={annexVisible} close={handleAnnexVisible} success={() => {}} />
       <SelectTypeModal
         title={selectModalTitle.title}
         visible={selectModalVisible}

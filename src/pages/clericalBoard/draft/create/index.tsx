@@ -294,7 +294,6 @@ function DraftCreate(props: PropsType) {
    */
   const handleConfirmSelectModal = (data: object) => {
     const { value } = selectModalTitle
-    handleCancelSelectModal()
     if (value === 'template') {
       dispatch({
         type: 'changeTemplateValue',
@@ -473,7 +472,7 @@ function DraftCreate(props: PropsType) {
         </List>
         <WhiteSpace />
       </PageContainer>
-      <AnnexModal visible={annexVisible} close={handleAnnexVisible} />
+      <AnnexModal visible={annexVisible} close={handleAnnexVisible} success={() => {}} />
       <SelectTypeModal
         title={selectModalTitle.title}
         visible={selectModalVisible}
