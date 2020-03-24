@@ -1,3 +1,4 @@
+import StartApp from '@/pages/startApp'
 import Home from '@/pages/home'
 import ClericalBoard from '@/pages/clericalBoard'
 import ClericalTemplate from '@/pages/clericalBoard/template'
@@ -11,6 +12,10 @@ import ReviewDetails from '@/pages/clericalBoard/reviewDetails'
 import ReviewReceiver from '@/pages/clericalBoard/reviewDetails/receiver'
 
 const routes: Array<object> = [
+  {
+    path: '/page',
+    component: StartApp,
+  },
   {
     path: '/',
     exact: true,

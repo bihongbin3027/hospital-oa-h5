@@ -6,10 +6,9 @@ const localName: string = 'wx_hospital_oa_h5'
  * @param {String} id
  * @param {String} key
  * @param {String} value
- * @return void
  * @Date 2020-02-21 17:08:59
  */
-export function saveToLocal(id: string, key: string, value: string) {
+export function saveToLocal(id: 'h5', key: string, value: any) {
   let store = window.localStorage[localName]
   if (!store) {
     store = {}
@@ -29,11 +28,10 @@ export function saveToLocal(id: string, key: string, value: string) {
  * @author biHongBin
  * @param {String} id
  * @param {String} key
- * @return void
  * @Date 2020-02-21 17:09:42
  */
 // 读取localStorage
-export function loadFromLocal(id: string, key: string, def: any = '') {
+export function loadFromLocal(id: 'h5', key: string, def: any = '') {
   let store = window.localStorage[localName]
   if (!store) {
     return def
