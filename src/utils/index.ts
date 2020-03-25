@@ -8,7 +8,7 @@ const localName: string = 'wx_hospital_oa_h5'
  * @param {String} value
  * @Date 2020-02-21 17:08:59
  */
-export function saveToLocal(id: 'h5', key: string, value: any) {
+export const saveToLocal = (id: 'h5', key: string, value: any) => {
   let store = window.localStorage[localName]
   if (!store) {
     store = {}
@@ -30,8 +30,7 @@ export function saveToLocal(id: 'h5', key: string, value: any) {
  * @param {String} key
  * @Date 2020-02-21 17:09:42
  */
-// 读取localStorage
-export function loadFromLocal(id: 'h5', key: string, def: any = '') {
+export const loadFromLocal = (id: 'h5', key: string, def: any = '') => {
   let store = window.localStorage[localName]
   if (!store) {
     return def

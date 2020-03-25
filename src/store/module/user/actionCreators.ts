@@ -9,5 +9,5 @@ import { constants } from './index'
  */
 export const changeGlobalLabelList = (data: any) => ({
   type: constants.CHANGE_GLOBAL_LABEL_LIST,
-  data: fromJS(data),
+  payload: fromJS(data),
 })

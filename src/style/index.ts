@@ -15,7 +15,8 @@ export const Wrapper = styled.div`
   position: fixed;
   width: 100%;
   top: 0;
-  bottom: ${(props: { footer?: string }) => (props.footer ? props.footer + 'px' : 0)};
+  bottom: ${(props: { footer?: string }) =>
+    props.footer ? props.footer + 'px' : 0};
   left: 0;
   right: 0;
   z-index: 1;
@@ -76,8 +77,8 @@ export const Wrapper = styled.div`
     }
   }
   .am-wingblank-md {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
   }
   .am-list-style {
     .am-list-header-style {
@@ -157,14 +158,16 @@ export const Wrapper = styled.div`
 // 自定义内层包裹容器的背景色
 export const PageContainer = styled.div`
   height: 100%;
-  background-color: ${(props: { backgroundColor?: string }) => props.backgroundColor};
+  background-color: ${(props: { backgroundColor?: string }) =>
+    props.backgroundColor};
   overflow-y: auto;
 `
 
 // 小号字体及颜色
 export const FontXs = styled.div`
   font-size: 12px;
-  display: ${(props: { display?: string }) => (props.display ? props.display : 'block')};
+  display: ${(props: { display?: string }) =>
+    props.display ? props.display : 'block'};
 `
 
 // 特别小号字体及颜色
@@ -191,9 +194,12 @@ export const FontMd = styled(FontXs)`
 export const IconStyle = styled.span`
   display: inline-block;
   width: ${(props: IconProps) => (props.width ? props.width + 'px' : '20px')};
-  height: ${(props: IconProps) => (props.height ? props.height + 'px' : '20px')};
-  border-radius: ${(props: IconProps) => (props.radius ? props.radius + 'px' : 0)};
-  background-image: url(${(props: IconProps) => (props.icon ? props.icon : normalImage)});
+  height: ${(props: IconProps) =>
+    props.height ? props.height + 'px' : '20px'};
+  border-radius: ${(props: IconProps) =>
+    props.radius ? props.radius + 'px' : 0};
+  background-image: url(${(props: IconProps) =>
+    props.icon ? props.icon : normalImage});
   background-repeat: no-repeat;
   background-size: contain;
 `

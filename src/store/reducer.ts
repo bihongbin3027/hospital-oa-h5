@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux-immutable'
-import { reducer as globalReducer } from './global'
+import { reducer as userReducer } from './module/user'
 
 export default combineReducers({
-  // 全局状态
-  globalData: globalReducer,
+  // 用户状态
+  user: userReducer,
 })

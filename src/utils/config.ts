@@ -38,7 +38,8 @@ import releaseIcon from '@/assets/images/release-icon.png'
 import confirmFootIcon from '@/assets/images/confirm-foot-icon.png'
 
 // 默认图片
-const normalImage = 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png'
+const normalImage =
+  'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png'
 
 export {
   normalImage,

@@ -29,33 +29,33 @@ function StartApp(props: propsType) {
       getWxOpenOauth2Url()
     }
 
+    /**
+     * @description 获取JsDk和用户信息
+     * @author biHongBin
+     * @Date 2020-03-25 10:28:22
+     */
     const getConfig = async () => {
-      const { appId, timeStamp, nonceStr, signature } = await getWxJsDk()
+      const wxJsDk: any = await getWxJsDk()
       const getUser = async () => {
-        try {
-          const { data } = await getCurrentUser()
-          // 存储用户信息
-          saveToLocal('h5', 'userInfo', data)
-          if (id) {
-            props.history.push({
-              pathname: `/${actionHref}`,
-              search: `id=${id}`,
-            })
-          } else {
-            props.history.push(`/${actionHref}`)
-          }
-        } catch (error) {
-          console.log('重新授权')
-          authorize()
+        const userInfo: any = await getCurrentUser()
+        // 存储用户信息
+        saveToLocal('h5', 'userInfo', userInfo.data)
+        if (id) {
+          props.history.push({
+            pathname: `/${actionHref}`,
+            search: `id=${id}`,
+          })
+        } else {
+          props.history.push(`/${actionHref}`)
         }
       }
       ;(window as any).wx.config({
         beta: true, // 必须这么写，否则wx.invoke调用形式的api会有问题
         debug: false, // 开启调试模式
-        appId: appId, // 必填，企业微信的corpID
-        timestamp: timeStamp, // 必填，生成签名的时间戳
-        nonceStr: nonceStr, // 必填，生成签名的随机串
-        signature: signature, // 必填，签名，见 附录-JS-SDK使用权限签名算法
+        appId: wxJsDk.appId, // 必填，企业微信的corpID
+        timestamp: wxJsDk.timeStamp, // 必填，生成签名的时间戳
+        nonceStr: wxJsDk.nonceStr, // 必填，生成签名的随机串
+        signature: wxJsDk.signature, // 必填，签名，见 附录-JS-SDK使用权限签名算法
         jsApiList: [
           'chooseImage',
           'getLocalImgData',

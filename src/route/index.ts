@@ -1,65 +1,70 @@
-import StartApp from '@/pages/startApp'
-import Home from '@/pages/home'
-import ClericalBoard from '@/pages/clericalBoard'
-import ClericalTemplate from '@/pages/clericalBoard/template'
-import DraftCreate from '@/pages/clericalBoard/draft/create'
-import PostCreate from '@/pages/clericalBoard/post/create'
-import PostReceiver from '@/pages/clericalBoard/post/receiver'
-import DocDetails from '@/pages/clericalBoard/docDetails'
-import DocReceiver from '@/pages/clericalBoard/docDetails/receiver'
-import DocSignSituation from '@/pages/clericalBoard/docDetails/signingSituation'
-import ReviewDetails from '@/pages/clericalBoard/reviewDetails'
-import ReviewReceiver from '@/pages/clericalBoard/reviewDetails/receiver'
+import React from 'react'
 
-const routes: Array<object> = [
+export interface IRouteBase {
+  path: string // 路由路径
+  exact?: boolean // 严格匹配
+  component?: any // 路由组件
+}
+
+export interface IRoute extends IRouteBase {
+  children?: IRoute
+}
+
+const routes: IRoute[] = [
   {
     path: '/page',
-    component: StartApp,
+    component: React.lazy(() => import('@/pages/startApp')), // 启动页
   },
   {
     path: '/',
     exact: true,
-    component: Home, // 首页
+    component: React.lazy(() => import('@/pages/home')), // 首页
   },
   {
     path: '/clerical-board',
-    component: ClericalBoard, // 公文管理
+    component: React.lazy(() => import('@/pages/clericalBoard')), // 公文管理
   },
   {
     path: '/clerical-template/:id',
-    component: ClericalTemplate, // 选择公文类型和模板
+    component: React.lazy(() => import('@/pages/clericalBoard/template')), // 选择公文类型和模板
   },
   {
     path: '/clerical-draft-create',
-    component: DraftCreate, // 创建公文拟稿
+    component: React.lazy(() => import('@/pages/clericalBoard/draft/create')), // 创建公文拟稿
   },
   {
     path: '/clerical-post-create',
-    component: PostCreate, // 创建公文发文
+    component: React.lazy(() => import('@/pages/clericalBoard/post/create')), // 创建公文发文
   },
   {
     path: '/clerical-post-receiver',
-    component: PostReceiver, // 创建公文发文-选择接收人
+    component: React.lazy(() => import('@/pages/clericalBoard/post/receiver')), // 创建公文发文-选择接收人
   },
   {
     path: '/clerical-doc-details/:id',
-    component: DocDetails, // 公文详情
+    component: React.lazy(() => import('@/pages/clericalBoard/docDetails')), // 公文详情
   },
   {
     path: '/clerical-doc-receiver',
-    component: DocReceiver, // 公文详情-查看接收人
+    component: React.lazy(() =>
+      import('@/pages/clericalBoard/docDetails/receiver'),
+    ), // 公文详情-查看接收人
   },
   {
     path: '/clerical-doc-signFor',
-    component: DocSignSituation, // 公文详情-签收情况
+    component: React.lazy(() =>
+      import('@/pages/clericalBoard/docDetails/signingSituation'),
+    ), // 公文详情-签收情况
   },
   {
     path: '/clerical-review-details/:id',
-    component: ReviewDetails, // 审核详情
+    component: React.lazy(() => import('@/pages/clericalBoard/reviewDetails')), // 审核详情
   },
   {
     path: '/clerical-review-receiver',
-    component: ReviewReceiver, // 审核详情-接收人
+    component: React.lazy(() =>
+      import('@/pages/clericalBoard/reviewDetails/receiver'),
+    ), // 审核详情-接收人
   },
 ]
 
