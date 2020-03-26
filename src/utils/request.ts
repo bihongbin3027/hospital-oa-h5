@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios'
 import { Toast } from 'antd-mobile'
-import { getWxToken, getCurrentUser, getWxOpenOauth2Url } from '@/api/user'
-import { loadFromLocal, saveToLocal } from '@/utils'
+import { getWxOpenOauth2Url } from '@/api/user'
+import { loadFromLocal } from '@/utils'
 
 interface ResponseData<T> {
   code: number
@@ -9,23 +9,22 @@ interface ResponseData<T> {
   message: string
 }
 
-const request = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-  timeout: 8000,
-})
+axios.defaults.headers = {
+  'Content-Type': 'application/json;charset=utf-8',
+}
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 /**
  * @description 请求拦截器
  * @author biHongBin
  * @Date 2020-02-21 17:50:06
  */
-request.interceptors.request.use(
+axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const token = loadFromLocal('h5', 'wxToken')
+    const token: string = loadFromLocal('h5', 'wxToken')
     if (token) {
       config.headers.token = token
     }
-    config.headers['Content-Type'] = 'application/json;charset=utf-8'
     return config
   },
   (error: AxiosError) => {
@@ -38,7 +37,7 @@ request.interceptors.request.use(
  * @author biHongBin
  * @Date 2020-02-21 17:50:42
  */
-request.interceptors.response.use(
+axios.interceptors.response.use(
   (response: AxiosResponse<ResponseData<any>>) => {
     const { code, message } = response.data
     const token = loadFromLocal('h5', 'wxToken')
@@ -49,17 +48,8 @@ request.interceptors.response.use(
     } else if (code === 10001) {
       // token失效重新获取
       if (token && userInfo) {
-        getWxToken({
-          userId: userInfo.userId,
-        }).then((res: any) => {
-          saveToLocal('h5', 'wxToken', res)
-          getCurrentUser().then((userInfo: any) => {
-            // 存储用户信息
-            saveToLocal('h5', 'userInfo', userInfo)
-            // 刷新页面
-            window.location.reload()
-          })
-        })
+        console.log('token失效重新获取')
+        return Promise.reject(new Error(message))
       } else {
         // 重新授权
         getWxOpenOauth2Url()
@@ -76,4 +66,11 @@ request.interceptors.response.use(
   },
 )
 
-export default request
+/**
+ * @description 统一发起请求的函数
+ * @author biHongBin
+ * @Date 2020-03-26 15:12:03
+ */
+export default function request<T>(options: AxiosRequestConfig) {
+  return axios.request<T>(options)
+}

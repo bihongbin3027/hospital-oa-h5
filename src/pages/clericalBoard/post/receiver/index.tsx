@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect } from 'react'
 import { fromJS } from 'immutable'
 import { WhiteSpace, Flex, List, Grid } from 'antd-mobile'
+import { PageProps } from '@/typings'
 import FooterButtons from '@/components/footerButtons'
 import {
   receiverListIcon,
@@ -22,10 +23,6 @@ interface ActionType {
   value: any
 }
 
-interface PropsType {
-  history: { goBack: () => void; push: (val: string) => void }
-}
-
 function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeValue':
@@ -35,7 +32,7 @@ function reducer(state: StateType, action: ActionType) {
   }
 }
 
-function Receiver(props: PropsType) {
+function Receiver(props: PageProps) {
   const [data] = useReducer(
     reducer,
     fromJS({
@@ -90,10 +87,17 @@ function Receiver(props: PropsType) {
       return (
         <AvatarArea>
           <div className="avatar-box">
-            <IconStyle className="block-delete" width={24} height={24} icon={avatarCloseIcon} />
+            <IconStyle
+              className="block-delete"
+              width={24}
+              height={24}
+              icon={avatarCloseIcon}
+            />
             <IconStyle width={52} height={52} radius={6} />
             <Flex>
-              <FontMm className="avatar-name color-text-caption">{dataItem.name}</FontMm>
+              <FontMm className="avatar-name color-text-caption">
+                {dataItem.name}
+              </FontMm>
             </Flex>
           </div>
         </AvatarArea>
@@ -111,7 +115,12 @@ function Receiver(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={receiverListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={receiverListIcon}
+              />
               接收人（1）
             </Flex>
           </Item>

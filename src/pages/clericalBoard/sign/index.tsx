@@ -1,19 +1,14 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { WingBlank, Flex } from 'antd-mobile'
+import { PageProps } from '@/typings'
 import { Tab, TabType } from '@/components/tab'
 import { TagUi } from '@/style/baseUi'
 import Searcher from '@/components/searcher'
 import { PageContainer, ListLi, FontMm, FontMd } from '@/style'
 import { signTabIcon } from '@/utils/config'
 
-interface PropsTypes {
-  history: {
-    push: (routeName: string) => void
-  }
-}
-
-function SignFor(props: PropsTypes) {
+function SignFor(props: PageProps) {
   const [tabData] = useState([
     {
       title: '待签收',
@@ -68,7 +63,9 @@ function SignFor(props: PropsTypes) {
             </div>
             <FontMm className="brand-tension">待签收</FontMm>
           </Flex>
-          <FontMd className="title">关于新冠状病毒疫情的重要指示重要指示…</FontMd>
+          <FontMd className="title">
+            关于新冠状病毒疫情的重要指示重要指示…
+          </FontMd>
           <Flex className="name-date">
             <FontMm className="name color-text-caption">1822张三</FontMm>
             <FontMm className="color-text-caption">2020-02-05 15:00</FontMm>
@@ -81,7 +78,9 @@ function SignFor(props: PropsTypes) {
             </div>
             <FontMm className="color-text-caption">已签收</FontMm>
           </Flex>
-          <FontMd className="title">关于新冠状病毒疫情的重要指示重要指示…</FontMd>
+          <FontMd className="title">
+            关于新冠状病毒疫情的重要指示重要指示…
+          </FontMd>
           <Flex className="name-date">
             <FontMm className="name color-text-caption">1822张三</FontMm>
             <FontMm className="color-text-caption">2020-02-05 15:00</FontMm>

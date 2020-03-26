@@ -1,17 +1,11 @@
 import React from 'react'
 import { parse } from 'query-string'
 import { saveToLocal, loadFromLocal } from '@/utils'
+import { PageProps } from '@/typings'
 import { getWxJsDk, getCurrentUser, getWxOpenOauth2Url } from '@/api/user'
 import Loading from '@/components/loading'
 
-interface propsType {
-  location: { search: string }
-  history: {
-    push: (val: { pathname: string; search: string } | string) => void
-  }
-}
-
-function StartApp(props: propsType) {
+function StartApp(props: PageProps) {
   /**
    * @description 初始化用户登陆信息和页面跳转
    * @author biHongBin
@@ -35,11 +29,13 @@ function StartApp(props: propsType) {
      * @Date 2020-03-25 10:28:22
      */
     const getConfig = async () => {
-      const wxJsDk: any = await getWxJsDk()
+      const {
+        data: { appId, timeStamp, nonceStr, signature },
+      } = await getWxJsDk()
       const getUser = async () => {
-        const userInfo: any = await getCurrentUser()
+        const resUser = await getCurrentUser()
         // 存储用户信息
-        saveToLocal('h5', 'userInfo', userInfo.data)
+        saveToLocal('h5', 'userInfo', resUser.data)
         if (id) {
           props.history.push({
             pathname: `/${actionHref}`,
@@ -52,10 +48,10 @@ function StartApp(props: propsType) {
       ;(window as any).wx.config({
         beta: true, // 必须这么写，否则wx.invoke调用形式的api会有问题
         debug: false, // 开启调试模式
-        appId: wxJsDk.appId, // 必填，企业微信的corpID
-        timestamp: wxJsDk.timeStamp, // 必填，生成签名的时间戳
-        nonceStr: wxJsDk.nonceStr, // 必填，生成签名的随机串
-        signature: wxJsDk.signature, // 必填，签名，见 附录-JS-SDK使用权限签名算法
+        appId: appId, // 必填，企业微信的corpID
+        timestamp: timeStamp, // 必填，生成签名的时间戳
+        nonceStr: nonceStr, // 必填，生成签名的随机串
+        signature: signature, // 必填，签名，见 附录-JS-SDK使用权限签名算法
         jsApiList: [
           'chooseImage',
           'getLocalImgData',

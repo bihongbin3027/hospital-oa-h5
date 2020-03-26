@@ -80,7 +80,13 @@ function Home() {
 
   const { normalSelect, tabBarData, newlyOpenedData } = data.toJS()
 
-  return <TabBarBox selected={normalSelect} tabBar={tabBarData} actionSheet={newlyOpenedData} />
+  return (
+    <TabBarBox
+      selected={normalSelect}
+      tabBar={tabBarData}
+      actionSheet={newlyOpenedData}
+    />
+  )
 }
 
 export default Home

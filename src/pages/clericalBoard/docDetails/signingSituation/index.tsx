@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from 'react'
 import { fromJS } from 'immutable'
+import { PageProps } from '@/typings'
 import { WhiteSpace, Flex, List, Grid, Accordion, Tabs } from 'antd-mobile'
 import FooterButtons from '@/components/footerButtons'
 import { backFootIcon } from '@/utils/config'
@@ -16,10 +17,6 @@ interface ActionType {
   value: any
 }
 
-interface PropsType {
-  history: { goBack: () => void; push: (val: string) => void }
-}
-
 function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeValue':
@@ -29,7 +26,7 @@ function reducer(state: StateType, action: ActionType) {
   }
 }
 
-function SignSituation(props: PropsType) {
+function SignSituation(props: PageProps) {
   const [data] = useReducer(
     reducer,
     fromJS({
@@ -72,7 +69,9 @@ function SignSituation(props: PropsType) {
         <div className="avatar-box">
           <IconStyle width={52} height={52} radius={6} />
           <Flex>
-            <FontMm className="avatar-name color-text-caption">{dataItem.name}</FontMm>
+            <FontMm className="avatar-name color-text-caption">
+              {dataItem.name}
+            </FontMm>
           </Flex>
         </div>
       </AvatarArea>
@@ -89,13 +88,18 @@ function SignSituation(props: PropsType) {
         <List className="am-list-style">
           <Tabs tabs={tabsData} />
           {receiverData.map(
-            (receiverItem: { name: string; children: Array<object> }, index: string) => (
+            (
+              receiverItem: { name: string; children: Array<object> },
+              index: string,
+            ) => (
               <Accordion
                 className="am-top-border-hidden am-bottom-border-hidden"
                 key={index}
                 defaultActiveKey="0"
               >
-                <Accordion.Panel header={<FontMm>{receiverItem.name}（1）</FontMm>}>
+                <Accordion.Panel
+                  header={<FontMm>{receiverItem.name}（1）</FontMm>}
+                >
                   <Item className="am-list-avatar">
                     <Grid
                       data={receiverItem.children}

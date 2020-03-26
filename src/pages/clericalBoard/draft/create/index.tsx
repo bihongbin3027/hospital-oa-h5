@@ -11,6 +11,7 @@ import {
   Switch,
   Modal,
 } from 'antd-mobile'
+import { PageProps } from '@/typings'
 import AnnexModal from '@/components/annexModal'
 import FooterButtons from '@/components/footerButtons'
 import SelectTypeModal from '@/components/selectTypeModal'
@@ -35,10 +36,6 @@ interface StateType {
 interface ActionType {
   type: string
   value: any
-}
-
-interface PropsType {
-  history: { goBack: () => void }
 }
 
 function reducer(state: StateType, action: ActionType) {
@@ -68,7 +65,7 @@ function reducer(state: StateType, action: ActionType) {
   }
 }
 
-function DraftCreate(props: PropsType) {
+function DraftCreate(props: PageProps) {
   const [data, dispatch] = useReducer(
     reducer,
     fromJS({
@@ -340,10 +337,17 @@ function DraftCreate(props: PropsType) {
       return (
         <AvatarArea>
           <div className="avatar-box">
-            <IconStyle className="block-delete" width={24} height={24} icon={avatarCloseIcon} />
+            <IconStyle
+              className="block-delete"
+              width={24}
+              height={24}
+              icon={avatarCloseIcon}
+            />
             <IconStyle width={52} height={52} radius={6} />
             <Flex>
-              <FontMm className="avatar-name color-text-caption">{dataItem.name}</FontMm>
+              <FontMm className="avatar-name color-text-caption">
+                {dataItem.name}
+              </FontMm>
             </Flex>
           </div>
         </AvatarArea>
@@ -362,7 +366,12 @@ function DraftCreate(props: PropsType) {
             arrow="horizontal"
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={personTagIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={personTagIcon}
+              />
               公文模板
             </Flex>
           </Item>
@@ -373,7 +382,12 @@ function DraftCreate(props: PropsType) {
             arrow="horizontal"
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={personTagIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={personTagIcon}
+              />
               公文类型
             </Flex>
           </Item>
@@ -387,7 +401,12 @@ function DraftCreate(props: PropsType) {
             }
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={personTagIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={personTagIcon}
+              />
               文号
             </Flex>
           </Item>
@@ -426,7 +445,12 @@ function DraftCreate(props: PropsType) {
             onClick={() => handleAnnexVisible(true)}
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={annexListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={annexListIcon}
+              />
               添加附件
             </Flex>
           </Item>
@@ -434,17 +458,23 @@ function DraftCreate(props: PropsType) {
             <WingBlank>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-sm">关于疫情防疫部署方案.docx</FontMm>
+                <FontMm className="color-text-caption m-r-sm">
+                  关于疫情防疫部署方案.docx
+                </FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-sm">关于疫情防疫部署方案.docx</FontMm>
+                <FontMm className="color-text-caption m-r-sm">
+                  关于疫情防疫部署方案.docx
+                </FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
               <Flex>
-                <FontMm className="color-text-caption m-r-sm">关于疫情防疫部署方案.docx</FontMm>
+                <FontMm className="color-text-caption m-r-sm">
+                  关于疫情防疫部署方案.docx
+                </FontMm>
                 <FontMm className="color-text-delete">删除</FontMm>
               </Flex>
               <WhiteSpace />
@@ -455,7 +485,12 @@ function DraftCreate(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={reviewListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={reviewListIcon}
+              />
               审核人
             </Flex>
           </Item>
@@ -472,7 +507,11 @@ function DraftCreate(props: PropsType) {
         </List>
         <WhiteSpace />
       </PageContainer>
-      <AnnexModal visible={annexVisible} close={handleAnnexVisible} success={() => {}} />
+      <AnnexModal
+        visible={annexVisible}
+        close={handleAnnexVisible}
+        success={() => {}}
+      />
       <SelectTypeModal
         title={selectModalTitle.title}
         visible={selectModalVisible}

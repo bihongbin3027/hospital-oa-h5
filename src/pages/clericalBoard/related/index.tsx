@@ -1,20 +1,27 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { WingBlank, Flex, Popover } from 'antd-mobile'
+import { PageProps } from '@/typings'
 import { Tab, TabType } from '@/components/tab'
 import { TagUi } from '@/style/baseUi'
-import { PageContainer, ListLi, FontMm, FontMd, FontMr, IconStyle } from '@/style'
-import { reviewTabIcon, postTabIcon, draftTabIcon, editListIcon } from '@/utils/config'
+import {
+  PageContainer,
+  ListLi,
+  FontMm,
+  FontMd,
+  FontMr,
+  IconStyle,
+} from '@/style'
+import {
+  reviewTabIcon,
+  postTabIcon,
+  draftTabIcon,
+  editListIcon,
+} from '@/utils/config'
 
 const Item = Popover.Item
 
-interface PropsTypes {
-  history: {
-    push: (routeName: string) => void
-  }
-}
-
-function Related(props: PropsTypes) {
+function Related(props: PageProps) {
   const [tabData] = useState([
     {
       title: '审核',
@@ -81,7 +88,9 @@ function Related(props: PropsTypes) {
               </div>
             </Flex>
           </Flex>
-          <FontMd className="title">关于新冠状病毒疫情的重要指示重要指示…</FontMd>
+          <FontMd className="title">
+            关于新冠状病毒疫情的重要指示重要指示…
+          </FontMd>
           <Flex className="name-date">
             <FontMm className="name color-text-caption">1822张三</FontMm>
             <FontMm className="color-text-caption">2020-02-05 15:00</FontMm>
@@ -94,7 +103,9 @@ function Related(props: PropsTypes) {
             </div>
             <FontMm className="color-text-caption">不通过</FontMm>
           </Flex>
-          <FontMd className="title">关于新冠状病毒疫情的重要指示重要指示…</FontMd>
+          <FontMd className="title">
+            关于新冠状病毒疫情的重要指示重要指示…
+          </FontMd>
           <Flex className="name-date">
             <FontMm className="name color-text-caption">1822张三</FontMm>
             <FontMm className="color-text-caption">2020-02-05 15:00</FontMm>
@@ -107,7 +118,9 @@ function Related(props: PropsTypes) {
             </div>
             <FontMm className="brand-warning">审核中</FontMm>
           </Flex>
-          <FontMd className="title">关于新冠状病毒疫情的重要指示重要指示…</FontMd>
+          <FontMd className="title">
+            关于新冠状病毒疫情的重要指示重要指示…
+          </FontMd>
           <Flex className="name-date">
             <FontMm className="name color-text-caption">1822张三</FontMm>
             <FontMm className="color-text-caption">2020-02-05 15:00</FontMm>
@@ -120,7 +133,9 @@ function Related(props: PropsTypes) {
             </div>
             <FontMm className="brand-primary">已审核</FontMm>
           </Flex>
-          <FontMd className="title">关于新冠状病毒疫情的重要指示重要指示…</FontMd>
+          <FontMd className="title">
+            关于新冠状病毒疫情的重要指示重要指示…
+          </FontMd>
           <Flex className="name-date">
             <FontMm className="name color-text-caption">1822张三</FontMm>
             <FontMm className="color-text-caption">2020-02-05 15:00</FontMm>

@@ -1,5 +1,16 @@
 import request from '@/utils/request'
 
+export interface User {
+  userId: string
+}
+
+export interface WxJsDk {
+  appId: string
+  timeStamp: string
+  nonceStr: string
+  signature: string
+}
+
 /**
  * @description 重新授权
  * @author biHongBin
@@ -18,8 +29,8 @@ export const getWxOpenOauth2Url = () => {
  * @param {Object} params
  * @Date 2020-03-24 17:25:15
  */
-export const getWxToken = (params: object) => {
-  return request({
+export const getWxToken = (params: User) => {
+  return request<{ data: string }>({
     url: '/oaCloud/auth/getWxToken',
     method: 'get',
     params,
@@ -32,7 +43,7 @@ export const getWxToken = (params: object) => {
  * @Date 2020-03-24 16:00:00
  */
 export const getWxJsDk = () => {
-  return request({
+  return request<WxJsDk>({
     url: '/oaCloud/auth/getWXjsdk',
     method: 'get',
   })

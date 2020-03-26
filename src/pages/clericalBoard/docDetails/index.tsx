@@ -10,6 +10,7 @@ import {
   Switch,
   TextareaItem,
 } from 'antd-mobile'
+import { PageProps } from '@/typings'
 import { TagUi } from '@/style/baseUi'
 import FooterButtons from '@/components/footerButtons'
 import {
@@ -35,10 +36,6 @@ interface ActionType {
   value: any
 }
 
-interface PropsType {
-  history: { goBack: () => void; push: (val: string) => void }
-}
-
 function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeOpinionSwitch':
@@ -50,7 +47,7 @@ function reducer(state: StateType, action: ActionType) {
   }
 }
 
-function DocDetails(props: PropsType) {
+function DocDetails(props: PageProps) {
   const [data, dispatch] = useReducer(
     reducer,
     fromJS({
@@ -148,7 +145,9 @@ function DocDetails(props: PropsType) {
             <FontMd>主题标题主题标题</FontMd>
             <WhiteSpace size="lg" />
             <Flex>
-              <TagUi className="tag-border-normal color-text-caption">公共事件</TagUi>
+              <TagUi className="tag-border-normal color-text-caption">
+                公共事件
+              </TagUi>
             </Flex>
             <WhiteSpace size="lg" />
             <FontMm className="am-text-line">
@@ -161,7 +160,12 @@ function DocDetails(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={annexListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={annexListIcon}
+              />
               附件
             </Flex>
           </Item>
@@ -169,7 +173,9 @@ function DocDetails(props: PropsType) {
             <WingBlank>
               <WhiteSpace />
               <Flex justify="between">
-                <FontMm className="color-text-caption">关于疫情防疫部署方案.docx</FontMm>
+                <FontMm className="color-text-caption">
+                  关于疫情防疫部署方案.docx
+                </FontMm>
                 <Flex>
                   <FontMm className="color-text-caption m-r-sm">已读</FontMm>
                   <Icon type="right" color="#d5d5d5" />
@@ -177,7 +183,9 @@ function DocDetails(props: PropsType) {
               </Flex>
               <WhiteSpace />
               <Flex justify="between">
-                <FontMm className="color-text-caption">关于疫情防疫部署方案.docx</FontMm>
+                <FontMm className="color-text-caption">
+                  关于疫情防疫部署方案.docx
+                </FontMm>
                 <Flex>
                   <FontMm className="brand-error m-r-sm">未读</FontMm>
                   <Icon type="right" color="#d5d5d5" />
@@ -197,7 +205,12 @@ function DocDetails(props: PropsType) {
             onClick={handleReceiverSelect}
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={receiverListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={receiverListIcon}
+              />
               接收人
             </Flex>
           </Item>
@@ -208,36 +221,65 @@ function DocDetails(props: PropsType) {
             onClick={handleSignSituation}
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={signListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={signListIcon}
+              />
               签收情况
             </Flex>
           </Item>
         </List>
         <WhiteSpace />
         <List className="am-list-style">
-          <Item className="am-list-header-style" arrow="horizontal" extra={<FontMm>{5}人</FontMm>}>
+          <Item
+            className="am-list-header-style"
+            arrow="horizontal"
+            extra={<FontMm>{5}人</FontMm>}
+          >
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={circulateListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={circulateListIcon}
+              />
               传阅意见
             </Flex>
           </Item>
-          <Accordion className="am-top-border-hidden am-bottom-border-hidden" defaultActiveKey="0">
+          <Accordion
+            className="am-top-border-hidden am-bottom-border-hidden"
+            defaultActiveKey="0"
+          >
             <Accordion.Panel header={<FontMm>信息科</FontMm>}>
               <Item>
                 <WhiteSpace />
                 <Flex>
                   <Flex className="m-r-lg">
-                    <IconStyle className="m-r-sm" width={36} height={36} radius={36} />
+                    <IconStyle
+                      className="m-r-sm"
+                      width={36}
+                      height={36}
+                      radius={36}
+                    />
                     <div>
                       <Flex>
                         <FontMm className="m-r-sm">李四</FontMm>
-                        <FontMm className="color-text-caption">2020-20-19 16:00</FontMm>
+                        <FontMm className="color-text-caption">
+                          2020-20-19 16:00
+                        </FontMm>
                       </Flex>
                       <FontMm>非常好，同意</FontMm>
                     </div>
                   </Flex>
                   <Flex>
-                    <IconStyle className="m-r-xs" width={18} height={18} icon={withdrawIcon} />
+                    <IconStyle
+                      className="m-r-xs"
+                      width={18}
+                      height={18}
+                      icon={withdrawIcon}
+                    />
                     <FontMm className="color-text-caption">撤回</FontMm>
                   </Flex>
                 </Flex>

@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import { Grid, Flex, WingBlank, WhiteSpace, Icon, List } from 'antd-mobile'
-import { PageContainer, GridBox, GridBoxHeader, FontXs, FontMm, FontMd } from '@/style'
+import {
+  PageContainer,
+  GridBox,
+  GridBoxHeader,
+  FontXs,
+  FontMm,
+  FontMd,
+} from '@/style'
 import { personTagIcon, paycheckIcon } from '@/utils/config'
 import { Figures, AttendanceNumBox } from './style'
 
@@ -62,8 +69,12 @@ function Personal() {
                 hasLine={false}
                 renderItem={(dataItem: any) => (
                   <>
-                    <Figures className={`figures ${dataItem.numColor}`}>{dataItem.num}</Figures>
-                    <FontMm className={dataItem.textColor}>{dataItem.text}</FontMm>
+                    <Figures className={`figures ${dataItem.numColor}`}>
+                      {dataItem.num}
+                    </Figures>
+                    <FontMm className={dataItem.textColor}>
+                      {dataItem.text}
+                    </FontMm>
                   </>
                 )}
               />

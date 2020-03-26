@@ -2,6 +2,7 @@ import React, { useReducer } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Grid, Flex, WingBlank, WhiteSpace } from 'antd-mobile'
 import { fromJS } from 'immutable'
+import { PageProps } from '@/typings'
 import {
   officialDocumentIcon,
   attendanceIcon,
@@ -31,7 +32,7 @@ function reducer(state: StateType, action: ActionType) {
   }
 }
 
-function Workbench(props: any) {
+function Workbench(props: PageProps) {
   const [data] = useReducer(
     reducer,
     fromJS({
@@ -100,27 +101,41 @@ function Workbench(props: any) {
           </FontMd>
           <AgentUl>
             <AgentLi>
-              <IconStyle className="m-r-sm" width={28} height={28} icon={adTypeIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={28}
+                height={28}
+                icon={adTypeIcon}
+              />
               <div className="agent-text">
                 <Flex justify="between">
                   <FontMd>公文收发</FontMd>
                   <FontXs className="brand-tension">待签收</FontXs>
                 </Flex>
                 <Flex justify="between">
-                  <FontXs className="color-text-caption">1822张山-信息科</FontXs>
+                  <FontXs className="color-text-caption">
+                    1822张山-信息科
+                  </FontXs>
                   <FontXs className="color-text-caption">2020-02-05</FontXs>
                 </Flex>
               </div>
             </AgentLi>
             <AgentLi>
-              <IconStyle className="m-r-sm" width={28} height={28} icon={odTypeIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={28}
+                height={28}
+                icon={odTypeIcon}
+              />
               <div className="agent-text">
                 <Flex justify="between">
                   <FontMd>考勤申诉</FontMd>
                   <FontXs className="brand-tension">待签收</FontXs>
                 </Flex>
                 <Flex justify="between">
-                  <FontXs className="color-text-caption">1822张山-信息科</FontXs>
+                  <FontXs className="color-text-caption">
+                    1822张山-信息科
+                  </FontXs>
                   <FontXs className="color-text-caption">2020-02-05</FontXs>
                 </Flex>
               </div>

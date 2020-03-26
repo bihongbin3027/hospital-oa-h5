@@ -1,9 +1,23 @@
 import React, { useReducer, useEffect } from 'react'
 import { fromJS } from 'immutable'
-import { WingBlank, WhiteSpace, Flex, List, Icon, Accordion, TextareaItem } from 'antd-mobile'
+import {
+  WingBlank,
+  WhiteSpace,
+  Flex,
+  List,
+  Icon,
+  Accordion,
+  TextareaItem,
+} from 'antd-mobile'
+import { PageProps } from '@/typings'
 import { TagUi } from '@/style/baseUi'
 import FooterButtons from '@/components/footerButtons'
-import { annexListIcon, backFootIcon, receiverListIcon, reviewListIcon } from '@/utils/config'
+import {
+  annexListIcon,
+  backFootIcon,
+  receiverListIcon,
+  reviewListIcon,
+} from '@/utils/config'
 import { Wrapper, PageContainer, FontMm, FontMd, IconStyle } from '@/style'
 
 const Item = List.Item
@@ -17,10 +31,6 @@ interface ActionType {
   value: any
 }
 
-interface PropsType {
-  history: { goBack: () => void; push: (val: string) => void }
-}
-
 function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'changeAgreeIndex':
@@ -32,7 +42,7 @@ function reducer(state: StateType, action: ActionType) {
   }
 }
 
-function ReviewDetails(props: PropsType) {
+function ReviewDetails(props: PageProps) {
   const [data, dispatch] = useReducer(
     reducer,
     fromJS({
@@ -141,7 +151,12 @@ function ReviewDetails(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style">
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={annexListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={annexListIcon}
+              />
               附件
             </Flex>
           </Item>
@@ -149,12 +164,16 @@ function ReviewDetails(props: PropsType) {
             <WingBlank>
               <WhiteSpace />
               <Flex justify="between">
-                <FontMm className="color-text-caption">关于疫情防疫部署方案.docx</FontMm>
+                <FontMm className="color-text-caption">
+                  关于疫情防疫部署方案.docx
+                </FontMm>
                 <Icon type="right" color="#d5d5d5" />
               </Flex>
               <WhiteSpace />
               <Flex justify="between">
-                <FontMm className="color-text-caption">关于疫情防疫部署方案.docx</FontMm>
+                <FontMm className="color-text-caption">
+                  关于疫情防疫部署方案.docx
+                </FontMm>
                 <Icon type="right" color="#d5d5d5" />
               </Flex>
               <WhiteSpace />
@@ -171,7 +190,12 @@ function ReviewDetails(props: PropsType) {
             onClick={handleReceiverSelect}
           >
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={receiverListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={receiverListIcon}
+              />
               接收人
             </Flex>
           </Item>
@@ -180,23 +204,40 @@ function ReviewDetails(props: PropsType) {
         <List className="am-list-style">
           <Item className="am-list-header-style" extra={<FontMm>{5}人</FontMm>}>
             <Flex>
-              <IconStyle className="m-r-sm" width={20} height={20} icon={reviewListIcon} />
+              <IconStyle
+                className="m-r-sm"
+                width={20}
+                height={20}
+                icon={reviewListIcon}
+              />
               审批情况
             </Flex>
           </Item>
-          <Accordion className="am-top-border-hidden am-bottom-border-hidden" defaultActiveKey="0">
+          <Accordion
+            className="am-top-border-hidden am-bottom-border-hidden"
+            defaultActiveKey="0"
+          >
             <Accordion.Panel header={<FontMm>信息科</FontMm>}>
               <Item>
                 <WhiteSpace />
                 <Flex>
                   <Flex className="m-r-lg">
-                    <IconStyle className="m-r-sm" width={36} height={36} radius={36} />
+                    <IconStyle
+                      className="m-r-sm"
+                      width={36}
+                      height={36}
+                      radius={36}
+                    />
                     <div>
                       <Flex>
                         <FontMm className="m-r-sm">李四</FontMm>
-                        <FontMm className="color-text-caption">2020-20-19 16:00</FontMm>
+                        <FontMm className="color-text-caption">
+                          2020-20-19 16:00
+                        </FontMm>
                       </Flex>
-                      <FontMm className="color-text-caption">审批意见：无</FontMm>
+                      <FontMm className="color-text-caption">
+                        审批意见：无
+                      </FontMm>
                     </div>
                   </Flex>
                   <Flex>
@@ -208,13 +249,22 @@ function ReviewDetails(props: PropsType) {
                 <WhiteSpace />
                 <Flex>
                   <Flex className="m-r-lg">
-                    <IconStyle className="m-r-sm" width={36} height={36} radius={36} />
+                    <IconStyle
+                      className="m-r-sm"
+                      width={36}
+                      height={36}
+                      radius={36}
+                    />
                     <div>
                       <Flex>
                         <FontMm className="m-r-sm">李四</FontMm>
-                        <FontMm className="color-text-caption">2020-20-19 16:00</FontMm>
+                        <FontMm className="color-text-caption">
+                          2020-20-19 16:00
+                        </FontMm>
                       </Flex>
-                      <FontMm className="color-text-caption">审批意见：无</FontMm>
+                      <FontMm className="color-text-caption">
+                        审批意见：无
+                      </FontMm>
                     </div>
                   </Flex>
                   <Flex>
@@ -241,15 +291,19 @@ function ReviewDetails(props: PropsType) {
           <Item>
             <WhiteSpace />
             <Flex>
-              {agreeData.map((item: { text: string; className: string }, index: number) => (
-                <TagUi
-                  className={`tag-grey md m-r-lg ${index === agreeIndex ? item.className : ''}`}
-                  onClick={() => changeAgreeIndex(index)}
-                  key={index}
-                >
-                  {item.text}
-                </TagUi>
-              ))}
+              {agreeData.map(
+                (item: { text: string; className: string }, index: number) => (
+                  <TagUi
+                    className={`tag-grey md m-r-lg ${
+                      index === agreeIndex ? item.className : ''
+                    }`}
+                    onClick={() => changeAgreeIndex(index)}
+                    key={index}
+                  >
+                    {item.text}
+                  </TagUi>
+                ),
+              )}
             </Flex>
             <WhiteSpace />
             <TextareaItem
