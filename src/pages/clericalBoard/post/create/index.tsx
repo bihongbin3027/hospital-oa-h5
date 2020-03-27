@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import { fromJS } from 'immutable'
 import {
   List,
   Flex,
@@ -10,6 +9,7 @@ import {
   WingBlank,
   Modal,
 } from 'antd-mobile'
+import { IAction } from '@/store/types'
 import { PageProps } from '@/typings'
 import AnnexModal from '@/components/annexModal'
 import FooterButtons from '@/components/footerButtons'
@@ -29,110 +29,119 @@ import { Wrapper, PageContainer, IconStyle, FontMm, AvatarArea } from '@/style'
 const Item = List.Item
 const alert = Modal.alert
 
-interface StateType {
-  set: (key: string, value: any) => any
-}
-
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: any, action: IAction<any>) {
   switch (action.type) {
     case 'changeSelectModalTitle':
-      return state.set('selectModalTitle', action.value)
+      return {
+        ...state,
+        selectModalTitle: action.payload,
+      }
     case 'changeSelectModalData':
-      return state.set('selectModalData', action.value)
+      return {
+        ...state,
+        selectModalData: action.payload,
+      }
     case 'changeSelectModalVisible':
-      return state.set('selectModalVisible', action.value)
+      return {
+        ...state,
+        selectModalVisible: action.payload,
+      }
     case 'changeTypeValue':
-      return state.set('typeValue', action.value)
+      return {
+        ...state,
+        typeValue: action.payload,
+      }
     case 'changeInputTheme':
-      return state.set('inputTheme', action.value)
+      return {
+        ...state,
+        inputTheme: action.payload,
+      }
     case 'changeInputThemeContent':
-      return state.set('inputThemeContent', action.value)
+      return {
+        ...state,
+        inputThemeContent: action.payload,
+      }
     case 'changeAnnexVisible':
-      return state.set('annexVisible', action.value)
+      return {
+        ...state,
+        annexVisible: action.payload,
+      }
     default:
       return state
   }
 }
 
 function PostCreate(props: PageProps) {
-  const [data, dispatch] = useReducer(
-    reducer,
-    fromJS({
-      selectModalTitle: {}, // 模板和类型弹窗标题
-      selectModalData: [], // 需要渲染的值
-      selectModalVisible: false, // 模板和类型弹窗打开关闭
-      // 类型数据
-      typeData: [
-        {
-          id: '1',
-          name: '类型一',
-        },
-        {
-          id: '2',
-          name: '类型二',
-        },
-      ],
-      // 当前类型值
-      typeValue: {
+  const [data, dispatch] = useReducer(reducer, {
+    selectModalTitle: {}, // 模板和类型弹窗标题
+    selectModalData: [], // 需要渲染的值
+    selectModalVisible: false, // 模板和类型弹窗打开关闭
+    // 类型数据
+    typeData: [
+      {
         id: '1',
         name: '类型一',
       },
-      inputTheme: '', // 主题关键字
-      inputThemeContent: '', // 主题内容
-      // 审批人
-      approverData: [
-        {
-          name: '张三',
-          userId: '',
-          avatar: '',
-          mainDepartment: '',
-          mainDepartmentName: '',
-        },
-        {
-          type: 'add',
-          icon: '',
-        },
-      ],
-      annexVisible: false, // 附件弹窗
-      // 底部footer数据
-      footData: [
-        {
-          icon: draftFootIcon,
-          text: '存为草稿',
-          textColor: 'color-text-caption',
-          click: () => {
-            alert('提示', '是否存为草稿？', [
-              {
-                text: '取消',
-                onPress: () => {
-                  props.history.goBack()
-                },
+      {
+        id: '2',
+        name: '类型二',
+      },
+    ],
+    // 当前类型值
+    typeValue: {
+      id: '1',
+      name: '类型一',
+    },
+    inputTheme: '', // 主题关键字
+    inputThemeContent: '', // 主题内容
+    // 审批人
+    approverData: [
+      {
+        name: '张三',
+        userId: '',
+        avatar: '',
+        mainDepartment: '',
+        mainDepartmentName: '',
+      },
+      {
+        type: 'add',
+        icon: '',
+      },
+    ],
+    annexVisible: false, // 附件弹窗
+    // 底部footer数据
+    footData: [
+      {
+        icon: draftFootIcon,
+        text: '存为草稿',
+        textColor: 'color-text-caption',
+        click: () => {
+          alert('提示', '是否存为草稿？', [
+            {
+              text: '取消',
+              onPress: () => {
+                props.history.goBack()
               },
-              {
-                text: '确认',
-                onPress: () => {
-                  console.log('确认')
-                },
+            },
+            {
+              text: '确认',
+              onPress: () => {
+                console.log('确认')
               },
-            ])
-          },
+            },
+          ])
         },
-        {
-          icon: releaseFootIcon,
-          text: '发布',
-          textColor: 'brand-primary',
-          click: () => {
-            console.log('发布')
-          },
+      },
+      {
+        icon: releaseFootIcon,
+        text: '发布',
+        textColor: 'brand-primary',
+        click: () => {
+          console.log('发布')
         },
-      ],
-    }),
-  )
+      },
+    ],
+  })
 
   const {
     selectModalTitle,
@@ -145,7 +154,7 @@ function PostCreate(props: PageProps) {
     approverData,
     annexVisible,
     footData,
-  } = data.toJS()
+  } = data
 
   /**
    * @description 设置主题关键字
@@ -156,7 +165,7 @@ function PostCreate(props: PageProps) {
   const changeInputTheme = (value?: string) => {
     dispatch({
       type: 'changeInputTheme',
-      value: value,
+      payload: value,
     })
   }
 
@@ -169,7 +178,7 @@ function PostCreate(props: PageProps) {
   const changeInputThemeContent = (value?: string) => {
     dispatch({
       type: 'changeInputThemeContent',
-      value: value,
+      payload: value,
     })
   }
 
@@ -181,18 +190,18 @@ function PostCreate(props: PageProps) {
   const handleTypeSelect = () => {
     dispatch({
       type: 'changeSelectModalTitle',
-      value: {
+      payload: {
         title: '请选择公文类型',
         value: 'type',
       },
     })
     dispatch({
       type: 'changeSelectModalData',
-      value: typeData,
+      payload: typeData,
     })
     dispatch({
       type: 'changeSelectModalVisible',
-      value: true,
+      payload: true,
     })
   }
 
@@ -206,7 +215,7 @@ function PostCreate(props: PageProps) {
     if (value === 'type') {
       dispatch({
         type: 'changeTypeValue',
-        value: data,
+        payload: data,
       })
     }
   }
@@ -219,7 +228,7 @@ function PostCreate(props: PageProps) {
   const handleCancelSelectModal = () => {
     dispatch({
       type: 'changeSelectModalVisible',
-      value: false,
+      payload: false,
     })
   }
 
@@ -241,7 +250,7 @@ function PostCreate(props: PageProps) {
   const handleAnnexVisible = (data: boolean = false) => {
     dispatch({
       type: 'changeAnnexVisible',
-      value: data,
+      payload: data,
     })
   }
 

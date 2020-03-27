@@ -8,7 +8,7 @@ import { SelectTypeBox } from './style'
 interface ProsType {
   title: string
   visible: boolean
-  data: Array<any>
+  data: any[]
   confirm: (value: object) => void
   cancel: () => void
 }
@@ -22,13 +22,20 @@ function SelectTypeModal(props: ProsType) {
   }
 
   return (
-    <Modal popup visible={props.visible} onClose={props.cancel} animationType="slide-up">
+    <Modal
+      popup
+      visible={props.visible}
+      onClose={props.cancel}
+      animationType="slide-up"
+    >
       <List renderHeader={() => <div>{props.title}</div>}>
         <SelectTypeBox>
           <Flex>
             {props.data.map((item, index) => (
               <TagUi
-                className={`tag-grey ml ${item.name === selected.name ? 'tag-active' : ''}`}
+                className={`tag-grey ml ${
+                  item.name === selected.name ? 'tag-active' : ''
+                }`}
                 onClick={() => handleSelectItem(item)}
                 key={index}
               >
@@ -37,7 +44,12 @@ function SelectTypeModal(props: ProsType) {
             ))}
           </Flex>
         </SelectTypeBox>
-        <IconStyle width={64} height={64} icon={closeModalIcon} onClick={() => props.cancel()} />
+        <IconStyle
+          width={64}
+          height={64}
+          icon={closeModalIcon}
+          onClick={() => props.cancel()}
+        />
       </List>
     </Modal>
   )

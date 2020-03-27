@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from 'react'
-import { fromJS } from 'immutable'
 import { WhiteSpace, Flex, List, Grid, Accordion } from 'antd-mobile'
+import { IAction } from '@/store/types'
 import { PageProps } from '@/typings'
 import FooterButtons from '@/components/footerButtons'
 import { receiverListIcon, backFootIcon } from '@/utils/config'
@@ -8,58 +8,49 @@ import { Wrapper, PageContainer, IconStyle, AvatarArea, FontMm } from '@/style'
 
 const Item = List.Item
 
-interface StateType {
-  set: (key: string, value: any) => any
-}
-
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: any, action: IAction<any>) {
   switch (action.type) {
     case 'changeValue':
-      return state.set('value', action.value)
+      return {
+        ...state,
+        changeValue: action.payload,
+      }
     default:
       return state
   }
 }
 
 function Receiver(props: PageProps) {
-  const [data] = useReducer(
-    reducer,
-    fromJS({
-      // 接收人
-      receiverData: [
-        {
-          name: '信息科',
-          children: [
-            {
-              name: '张三',
-              userId: '',
-              avatar: '',
-              mainDepartment: '',
-              mainDepartmentName: '',
-            },
-          ],
-        },
-      ],
-      // 底部footer数据
-      footData: [
-        {
-          icon: backFootIcon,
-          text: '返回',
-          textColor: 'color-text-caption',
-          click: () => {
-            props.history.goBack()
+  const [data] = useReducer(reducer, {
+    // 接收人
+    receiverData: [
+      {
+        name: '信息科',
+        children: [
+          {
+            name: '张三',
+            userId: '',
+            avatar: '',
+            mainDepartment: '',
+            mainDepartmentName: '',
           },
+        ],
+      },
+    ],
+    // 底部footer数据
+    footData: [
+      {
+        icon: backFootIcon,
+        text: '返回',
+        textColor: 'color-text-caption',
+        click: () => {
+          props.history.goBack()
         },
-      ],
-    }),
-  )
+      },
+    ],
+  })
 
-  const { receiverData, footData } = data.toJS()
+  const { receiverData, footData } = data
 
   const renderAvatar = (dataItem: any) => {
     return (

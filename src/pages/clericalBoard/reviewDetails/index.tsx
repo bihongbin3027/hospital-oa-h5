@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect } from 'react'
-import { fromJS } from 'immutable'
 import {
   WingBlank,
   WhiteSpace,
@@ -9,6 +8,7 @@ import {
   Accordion,
   TextareaItem,
 } from 'antd-mobile'
+import { IAction } from '@/store/types'
 import { PageProps } from '@/typings'
 import { TagUi } from '@/style/baseUi'
 import FooterButtons from '@/components/footerButtons'
@@ -22,60 +22,54 @@ import { Wrapper, PageContainer, FontMm, FontMd, IconStyle } from '@/style'
 
 const Item = List.Item
 
-interface StateType {
-  set: (key: string, value: any) => any
-}
-
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: any, action: IAction<any>) {
   switch (action.type) {
     case 'changeAgreeIndex':
-      return state.set('agreeIndex', action.value)
+      return {
+        ...state,
+        agreeIndex: action.payload,
+      }
     case 'changeOpinionContent':
-      return state.set('opinionContent', action.value)
+      return {
+        ...state,
+        opinionContent: action.payload,
+      }
     default:
       return state
   }
 }
 
 function ReviewDetails(props: PageProps) {
-  const [data, dispatch] = useReducer(
-    reducer,
-    fromJS({
-      opinionContent: '', // 意见内容
-      agreeIndex: 0, // 审核同意不同意
-      // 审核同意数据
-      agreeData: [
-        {
-          className: 'tag-active',
-          text: '同意',
-          value: 0,
+  const [data, dispatch] = useReducer(reducer, {
+    opinionContent: '', // 意见内容
+    agreeIndex: 0, // 审核同意不同意
+    // 审核同意数据
+    agreeData: [
+      {
+        className: 'tag-active',
+        text: '同意',
+        value: 0,
+      },
+      {
+        className: 'tag-delete',
+        text: '不同意',
+        value: 1,
+      },
+    ],
+    // 底部footer数据
+    footData: [
+      {
+        icon: backFootIcon,
+        text: '返回',
+        textColor: 'color-text-caption',
+        click: () => {
+          props.history.goBack()
         },
-        {
-          className: 'tag-delete',
-          text: '不同意',
-          value: 1,
-        },
-      ],
-      // 底部footer数据
-      footData: [
-        {
-          icon: backFootIcon,
-          text: '返回',
-          textColor: 'color-text-caption',
-          click: () => {
-            props.history.goBack()
-          },
-        },
-      ],
-    }),
-  )
+      },
+    ],
+  })
 
-  const { opinionContent, agreeIndex, agreeData, footData } = data.toJS()
+  const { opinionContent, agreeIndex, agreeData, footData } = data
 
   /**
    * @description 设置发表意见内容
@@ -86,7 +80,7 @@ function ReviewDetails(props: PageProps) {
   const changeOpinionContent = (value?: string) => {
     dispatch({
       type: 'changeOpinionContent',
-      value: value,
+      payload: value,
     })
   }
 
@@ -99,7 +93,7 @@ function ReviewDetails(props: PageProps) {
   const changeAgreeIndex = (index: number) => {
     dispatch({
       type: 'changeAgreeIndex',
-      value: index,
+      payload: index,
     })
   }
 

@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect } from 'react'
-import { fromJS } from 'immutable'
 import {
   WingBlank,
   WhiteSpace,
@@ -10,6 +9,7 @@ import {
   Switch,
   TextareaItem,
 } from 'antd-mobile'
+import { IAction } from '@/store/types'
 import { PageProps } from '@/typings'
 import { TagUi } from '@/style/baseUi'
 import FooterButtons from '@/components/footerButtons'
@@ -27,47 +27,41 @@ import { Wrapper, PageContainer, FontMm, FontMd, IconStyle } from '@/style'
 
 const Item = List.Item
 
-interface StateType {
-  set: (key: string, value: any) => any
-}
-
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: any, action: IAction<any>) {
   switch (action.type) {
     case 'changeOpinionSwitch':
-      return state.set('opinionSwitch', action.value)
+      return {
+        ...state,
+        opinionSwitch: action.payload,
+      }
     case 'changeOpinionContent':
-      return state.set('opinionContent', action.value)
+      return {
+        ...state,
+        opinionContent: action.payload,
+      }
     default:
       return state
   }
 }
 
 function DocDetails(props: PageProps) {
-  const [data, dispatch] = useReducer(
-    reducer,
-    fromJS({
-      opinionSwitch: true, // 发表意见开关
-      opinionContent: '', // 意见内容
-      // 底部footer数据
-      footData: [
-        {
-          icon: backFootIcon,
-          text: '返回',
-          textColor: 'color-text-caption',
-          click: () => {
-            props.history.goBack()
-          },
+  const [data, dispatch] = useReducer(reducer, {
+    opinionSwitch: true, // 发表意见开关
+    opinionContent: '', // 意见内容
+    // 底部footer数据
+    footData: [
+      {
+        icon: backFootIcon,
+        text: '返回',
+        textColor: 'color-text-caption',
+        click: () => {
+          props.history.goBack()
         },
-      ],
-    }),
-  )
+      },
+    ],
+  })
 
-  const { opinionSwitch, opinionContent, footData } = data.toJS()
+  const { opinionSwitch, opinionContent, footData } = data
 
   /**
    * @description 打开或关闭发表意见开关
@@ -77,7 +71,7 @@ function DocDetails(props: PageProps) {
   const changeOpinionSwitch = () => {
     dispatch({
       type: 'changeOpinionSwitch',
-      value: !opinionSwitch,
+      payload: !opinionSwitch,
     })
   }
 
@@ -90,7 +84,7 @@ function DocDetails(props: PageProps) {
   const changeOpinionContent = (value?: string) => {
     dispatch({
       type: 'changeOpinionContent',
-      value: value,
+      payload: value,
     })
   }
 
@@ -102,7 +96,7 @@ function DocDetails(props: PageProps) {
   const clearOpinionContent = (value?: string) => {
     dispatch({
       type: 'changeOpinionContent',
-      value: '',
+      payload: '',
     })
   }
 

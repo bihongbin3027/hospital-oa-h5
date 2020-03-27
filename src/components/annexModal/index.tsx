@@ -1,35 +1,29 @@
 import React, { useReducer } from 'react'
-import { fromJS } from 'immutable'
 import { Modal, List } from 'antd-mobile'
+import { IAction } from '@/store/types'
 
 const Item = List.Item
 
-interface PropsTypes {
+interface PropType {
   visible: boolean
   close: () => void
   success: (val: object) => void
 }
 
-interface StateType {
-  set: (key: string, value: any) => any
-}
-
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: any, action: IAction<any>) {
   switch (action.type) {
     case 'changeVisible':
-      return state.set('visible', action.value)
+      return {
+        ...state,
+        visible: action.payload,
+      }
     default:
       return state
   }
 }
 
-function AnnexModal(props: PropsTypes) {
-  const [data, dispatch] = useReducer(reducer, fromJS({}))
+function AnnexModal(props: PropType) {
+  const [data, dispatch] = useReducer(reducer, {})
 
   /**
    * @description 上传拍照或相册文件
@@ -86,7 +80,12 @@ function AnnexModal(props: PropsTypes) {
   }
 
   return (
-    <Modal popup visible={props.visible} animationType="slide-up" onClose={() => props.close()}>
+    <Modal
+      popup
+      visible={props.visible}
+      animationType="slide-up"
+      onClose={() => props.close()}
+    >
       <List renderHeader={() => <div>附件上传</div>}>
         <Item onClick={handleTakePicture}>拍照</Item>
         <Item onClick={handlePhotoAlbum}>本地相册</Item>

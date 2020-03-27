@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import { fromJS } from 'immutable'
 import {
   List,
   Flex,
@@ -11,6 +10,7 @@ import {
   Switch,
   Modal,
 } from 'antd-mobile'
+import { IAction } from '@/store/types'
 import { PageProps } from '@/typings'
 import AnnexModal from '@/components/annexModal'
 import FooterButtons from '@/components/footerButtons'
@@ -29,134 +29,152 @@ import { Wrapper, PageContainer, IconStyle, FontMm, AvatarArea } from '@/style'
 const Item = List.Item
 const alert = Modal.alert
 
-interface StateType {
-  set: (key: string, value: any) => any
-}
-
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: any, action: IAction<any>) {
   switch (action.type) {
     case 'changeSelectModalTitle':
-      return state.set('selectModalTitle', action.value)
+      return {
+        ...state,
+        selectModalTitle: action.payload,
+      }
     case 'changeSelectModalData':
-      return state.set('selectModalData', action.value)
+      return {
+        ...state,
+        selectModalData: action.payload,
+      }
     case 'changeSelectModalVisible':
-      return state.set('selectModalVisible', action.value)
+      return {
+        ...state,
+        selectModalVisible: action.payload,
+      }
     case 'changeTemplateValue':
-      return state.set('templateValue', action.value)
+      return {
+        ...state,
+        templateValue: action.payload,
+      }
     case 'changeTypeValue':
-      return state.set('typeValue', action.value)
+      return {
+        ...state,
+        typeValue: action.payload,
+      }
     case 'changeSymbolSwitch':
-      return state.set('symbolSizeSwitch', action.value)
+      return {
+        ...state,
+        symbolSizeSwitch: action.payload,
+      }
     case 'changeInputSymbolSize':
-      return state.set('symbolSizeValue', action.value)
+      return {
+        ...state,
+        symbolSizeValue: action.payload,
+      }
     case 'changeInputTheme':
-      return state.set('inputTheme', action.value)
+      return {
+        ...state,
+        inputTheme: action.payload,
+      }
     case 'changeInputThemeContent':
-      return state.set('inputThemeContent', action.value)
+      return {
+        ...state,
+        inputThemeContent: action.payload,
+      }
     case 'changeAnnexVisible':
-      return state.set('annexVisible', action.value)
+      return {
+        ...state,
+        annexVisible: action.payload,
+      }
     default:
       return state
   }
 }
 
 function DraftCreate(props: PageProps) {
-  const [data, dispatch] = useReducer(
-    reducer,
-    fromJS({
-      selectModalTitle: {}, // 模板和类型弹窗标题
-      selectModalData: [], // 需要渲染的值
-      selectModalVisible: false, // 模板和类型弹窗打开关闭
-      // 模板数据
-      templateData: [
-        {
-          id: '1',
-          name: '模板一',
-        },
-        {
-          id: '2',
-          name: '模板二',
-        },
-      ],
-      // 当前模板值
-      templateValue: {
+  const [data, dispatch] = useReducer(reducer, {
+    selectModalTitle: {}, // 模板和类型弹窗标题
+    selectModalData: [], // 需要渲染的值
+    selectModalVisible: false, // 模板和类型弹窗打开关闭
+    // 模板数据
+    templateData: [
+      {
         id: '1',
         name: '模板一',
       },
-      // 类型数据
-      typeData: [
-        {
-          id: '1',
-          name: '类型一',
-        },
-        {
-          id: '2',
-          name: '类型二',
-        },
-      ],
-      // 当前类型值
-      typeValue: {
+      {
+        id: '2',
+        name: '模板二',
+      },
+    ],
+    // 当前模板值
+    templateValue: {
+      id: '1',
+      name: '模板一',
+    },
+    // 类型数据
+    typeData: [
+      {
         id: '1',
         name: '类型一',
       },
-      symbolSizeValue: '', // 文号
-      symbolSizeSwitch: false, // 文号开关
-      inputTheme: '', // 主题关键字
-      inputThemeContent: '', // 主题内容
-      annexVisible: false, // 附件弹窗
-      // 审批人
-      approverData: [
-        {
-          name: '张三',
-          userId: '',
-          avatar: '',
-          mainDepartment: '',
-          mainDepartmentName: '',
-        },
-        {
-          type: 'add',
-          icon: '',
-        },
-      ],
-      // 底部footer数据
-      footData: [
-        {
-          icon: draftFootIcon,
-          text: '存为草稿',
-          textColor: 'color-text-caption',
-          click: () => {
-            alert('提示', '是否存为草稿？', [
-              {
-                text: '取消',
-                onPress: () => {
-                  props.history.goBack()
-                },
+      {
+        id: '2',
+        name: '类型二',
+      },
+    ],
+    // 当前类型值
+    typeValue: {
+      id: '1',
+      name: '类型一',
+    },
+    symbolSizeValue: '', // 文号
+    symbolSizeSwitch: false, // 文号开关
+    inputTheme: '', // 主题关键字
+    inputThemeContent: '', // 主题内容
+    annexVisible: false, // 附件弹窗
+    // 审批人
+    approverData: [
+      {
+        name: '张三',
+        userId: '',
+        avatar: '',
+        mainDepartment: '',
+        mainDepartmentName: '',
+      },
+      {
+        type: 'add',
+        icon: '',
+      },
+    ],
+    // 底部footer数据
+    footData: [
+      {
+        icon: draftFootIcon,
+        text: '存为草稿',
+        textColor: 'color-text-caption',
+        click: () => {
+          alert('提示', '是否存为草稿？', [
+            {
+              text: '取消',
+              onPress: () => {
+                props.history.goBack()
               },
-              {
-                text: '确认',
-                onPress: () => {
-                  console.log('确认')
-                },
+            },
+            {
+              text: '确认',
+              onPress: () => {
+                console.log('确认')
               },
-            ])
-          },
+            },
+          ])
         },
-        {
-          icon: releaseFootIcon,
-          text: '发布',
-          textColor: 'brand-primary',
-          click: () => {
-            console.log('发布')
-          },
+      },
+      {
+        icon: releaseFootIcon,
+        text: '发布',
+        textColor: 'brand-primary',
+        click: () => {
+          console.log('发布')
         },
-      ],
-    }),
-  )
+      },
+    ],
+  })
 
   const {
     selectModalTitle,
@@ -173,7 +191,7 @@ function DraftCreate(props: PageProps) {
     annexVisible,
     approverData,
     footData,
-  } = data.toJS()
+  } = data
 
   /**
    * @description 设置文号开关
@@ -183,7 +201,7 @@ function DraftCreate(props: PageProps) {
   const changeSymbolSwitch = () => {
     dispatch({
       type: 'changeSymbolSwitch',
-      value: !symbolSizeSwitch,
+      payload: !symbolSizeSwitch,
     })
   }
 
@@ -196,7 +214,7 @@ function DraftCreate(props: PageProps) {
   const changeInputSymbolSize = (value?: string) => {
     dispatch({
       type: 'changeInputSymbolSize',
-      value: value,
+      payload: value,
     })
   }
 
@@ -209,7 +227,7 @@ function DraftCreate(props: PageProps) {
   const changeInputTheme = (value?: string) => {
     dispatch({
       type: 'changeInputTheme',
-      value: value,
+      payload: value,
     })
   }
 
@@ -222,7 +240,7 @@ function DraftCreate(props: PageProps) {
   const changeInputThemeContent = (value?: string) => {
     dispatch({
       type: 'changeInputThemeContent',
-      value: value,
+      payload: value,
     })
   }
 
@@ -234,18 +252,18 @@ function DraftCreate(props: PageProps) {
   const handleTemplateSelect = () => {
     dispatch({
       type: 'changeSelectModalTitle',
-      value: {
+      payload: {
         title: '请选择公文模板',
         value: 'template',
       },
     })
     dispatch({
       type: 'changeSelectModalData',
-      value: templateData,
+      payload: templateData,
     })
     dispatch({
       type: 'changeSelectModalVisible',
-      value: true,
+      payload: true,
     })
   }
 
@@ -257,18 +275,18 @@ function DraftCreate(props: PageProps) {
   const handleTypeSelect = () => {
     dispatch({
       type: 'changeSelectModalTitle',
-      value: {
+      payload: {
         title: '请选择公文类型',
         value: 'type',
       },
     })
     dispatch({
       type: 'changeSelectModalData',
-      value: typeData,
+      payload: typeData,
     })
     dispatch({
       type: 'changeSelectModalVisible',
-      value: true,
+      payload: true,
     })
   }
 
@@ -280,7 +298,7 @@ function DraftCreate(props: PageProps) {
   const handleCancelSelectModal = () => {
     dispatch({
       type: 'changeSelectModalVisible',
-      value: false,
+      payload: false,
     })
   }
 
@@ -294,13 +312,13 @@ function DraftCreate(props: PageProps) {
     if (value === 'template') {
       dispatch({
         type: 'changeTemplateValue',
-        value: data,
+        payload: data,
       })
     }
     if (value === 'type') {
       dispatch({
         type: 'changeTypeValue',
-        value: data,
+        payload: data,
       })
     }
   }
@@ -314,7 +332,7 @@ function DraftCreate(props: PageProps) {
   const handleAnnexVisible = (data: boolean = false) => {
     dispatch({
       type: 'changeAnnexVisible',
-      value: data,
+      payload: data,
     })
   }
 

@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Grid, Flex, WingBlank, WhiteSpace } from 'antd-mobile'
-import { fromJS } from 'immutable'
+import { IAction } from '@/store/types'
 import { PageProps } from '@/typings'
 import {
   officialDocumentIcon,
@@ -14,51 +14,42 @@ import {
 import { PageContainer, GridBox, FontMd, FontXs, IconStyle } from '@/style'
 import { GridBoxBg, GridIcon, AgentBox, AgentUl, AgentLi } from './style'
 
-interface StateType {
-  set: (key: string, value: any) => any
-}
-
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: any, action: IAction<any>) {
   switch (action.type) {
     case 'changeValue':
-      return state.set('key', action.value)
+      return {
+        ...state,
+        changeValue: action.payload,
+      }
     default:
       return state
   }
 }
 
 function Workbench(props: PageProps) {
-  const [data] = useReducer(
-    reducer,
-    fromJS({
-      gridData: [
-        {
-          route: '/clerical-board',
-          text: '公文收发',
-          icon: officialDocumentIcon,
-        },
-        {
-          text: '考勤管理',
-          icon: attendanceIcon,
-        },
-        {
-          text: '排班管理',
-          icon: scheduleIcon,
-        },
-        {
-          text: '审批流程',
-          icon: approvalIcon,
-        },
-      ],
-    }),
-  )
+  const [data] = useReducer(reducer, {
+    gridData: [
+      {
+        route: '/clerical-board',
+        text: '公文收发',
+        icon: officialDocumentIcon,
+      },
+      {
+        text: '考勤管理',
+        icon: attendanceIcon,
+      },
+      {
+        text: '排班管理',
+        icon: scheduleIcon,
+      },
+      {
+        text: '审批流程',
+        icon: approvalIcon,
+      },
+    ],
+  })
 
-  const { gridData } = data.toJS()
+  const { gridData } = data
 
   /**
    * @description 首页头部菜单入口跳转

@@ -1,4 +1,3 @@
-import { fromJS } from 'immutable'
 import { constants } from './index'
 
 /**
@@ -9,5 +8,5 @@ import { constants } from './index'
  */
 export const changeGlobalLabelList = (data: any) => ({
   type: constants.CHANGE_GLOBAL_LABEL_LIST,
-  payload: fromJS(data),
+  payload: data,
 })

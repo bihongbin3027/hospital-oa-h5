@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { Flex, Icon, DatePicker, Toast } from 'antd-mobile'
 import moment from 'moment'
-import { fromJS } from 'immutable'
+import { IAction } from '@/store/types'
 import { ButtonUi } from '@/style/baseUi'
 import { themesDefault } from '@/style/theme'
 import { searchMenuIcon } from '@/utils/config'
@@ -10,49 +10,60 @@ import { SearchWrap, SearchRange } from './style'
 
 const brand_primary = themesDefault['@brand-primary']
 
-interface PropsTypes {
+interface PropType {
   search: (value: object) => any
 }
-interface StateType {
-  set: (key: string, value: any) => any
-}
 
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: any, action: IAction<any>) {
   switch (action.type) {
     case 'changeSearchValue':
-      return state.set('searchValue', action.value)
+      return {
+        ...state,
+        searchValue: action.payload,
+      }
     case 'changeMenuVisible':
-      return state.set('menuVisible', action.value)
+      return {
+        ...state,
+        menuVisible: action.payload,
+      }
     case 'changeCleanIconVisible':
-      return state.set('cleanIconVisible', action.value)
+      return {
+        ...state,
+        cleanIconVisible: action.payload,
+      }
     case 'changeStartDate':
-      return state.set('startDate', action.value)
+      return {
+        ...state,
+        startDate: action.payload,
+      }
     case 'changeEndDate':
-      return state.set('endDate', action.value)
+      return {
+        ...state,
+        endDate: action.payload,
+      }
     default:
       return state
   }
 }
 
-function Searcher(props: PropsTypes) {
-  const [data, dispatch] = useReducer(
-    reducer,
-    fromJS({
-      searchValue: '', // 搜索框的值
-      menuVisible: false, // 左侧菜单打开关闭
-      cleanIconVisible: false, // 清除按钮显示隐藏
-      maxDate: new Date(), // 最大可选日期
-      startDate: moment().format('YYYY-MM-DD'), //开始时间
-      endDate: moment().format('YYYY-MM-DD'), // 结束时间
-    }),
-  )
+function Searcher(props: PropType) {
+  const [data, dispatch] = useReducer(reducer, {
+    searchValue: '', // 搜索框的值
+    menuVisible: false, // 左侧菜单打开关闭
+    cleanIconVisible: false, // 清除按钮显示隐藏
+    maxDate: new Date(), // 最大可选日期
+    startDate: moment().format('YYYY-MM-DD'), //开始时间
+    endDate: moment().format('YYYY-MM-DD'), // 结束时间
+  })
 
-  const { searchValue, menuVisible, cleanIconVisible, maxDate, startDate, endDate } = data.toJS()
+  const {
+    searchValue,
+    menuVisible,
+    cleanIconVisible,
+    maxDate,
+    startDate,
+    endDate,
+  } = data
 
   /**
    * @description 打开或关闭搜索条件
@@ -62,7 +73,7 @@ function Searcher(props: PropsTypes) {
   const handleMenu = () => {
     dispatch({
       type: 'changeMenuVisible',
-      value: !menuVisible,
+      payload: !menuVisible,
     })
   }
 
@@ -82,11 +93,11 @@ function Searcher(props: PropsTypes) {
     }
     dispatch({
       type: 'changeSearchValue',
-      value: value,
+      payload: value,
     })
     dispatch({
       type: 'changeCleanIconVisible',
-      value: iconBool,
+      payload: iconBool,
     })
   }
 
@@ -97,7 +108,7 @@ function Searcher(props: PropsTypes) {
   const handleClearValue = () => {
     dispatch({
       type: 'changeSearchValue',
-      value: '',
+      payload: '',
     })
   }
 
@@ -112,13 +123,13 @@ function Searcher(props: PropsTypes) {
     if (type === 'startDate') {
       dispatch({
         type: 'changeStartDate',
-        value: formatDate,
+        payload: formatDate,
       })
     }
     if (type === 'endDate') {
       dispatch({
         type: 'changeEndDate',
-        value: formatDate,
+        payload: formatDate,
       })
     }
   }
@@ -158,10 +169,23 @@ function Searcher(props: PropsTypes) {
             placeholder="输入关键字"
           />
           <Flex className="search-icon">
-            <Flex className="clean" style={{ display: cleanIconVisible ? 'flex' : 'none' }}>
-              <Icon onClick={handleClearValue} type="cross" size="xs" color="#fff" />
+            <Flex
+              className="clean"
+              style={{ display: cleanIconVisible ? 'flex' : 'none' }}
+            >
+              <Icon
+                onClick={handleClearValue}
+                type="cross"
+                size="xs"
+                color="#fff"
+              />
             </Flex>
-            <Icon type="search" size="md" color={brand_primary} onClick={submit} />
+            <Icon
+              type="search"
+              size="md"
+              color={brand_primary}
+              onClick={submit}
+            />
           </Flex>
         </div>
       </Flex>
@@ -201,7 +225,9 @@ function Searcher(props: PropsTypes) {
         </Flex>
         <Flex className="range-footer" justify="end">
           <div>
-            <ButtonUi className="button-inline color-text-caption">清空</ButtonUi>
+            <ButtonUi className="button-inline color-text-caption">
+              清空
+            </ButtonUi>
             <ButtonUi className="button-primary button-inline" onClick={submit}>
               查询
             </ButtonUi>

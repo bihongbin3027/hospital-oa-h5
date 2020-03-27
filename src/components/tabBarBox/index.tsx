@@ -1,31 +1,10 @@
 import React, { useEffect, useReducer } from 'react'
 import { withRouter } from 'react-router-dom'
 import { TabBar, Modal, Grid } from 'antd-mobile'
-import { fromJS } from 'immutable'
+import { PageProps } from '@/typings'
+import { IAction } from '@/store/types'
 import { closeModalIcon } from '@/utils/config'
 import { Wrapper, IconStyle, NewlyOpenedBox, FontXs } from '@/style'
-
-interface StateType {
-  set: (key: string, value: any) => any
-}
-
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
-  switch (action.type) {
-    case 'changeTitle':
-      return state.set('documentTitle', action.value)
-    case 'changeTabItem':
-      return state.set('selectedTab', action.value)
-    case 'changeNewlyOpenedModal':
-      return state.set('newlyOpenedModal', action.value)
-    default:
-      return state
-  }
-}
 
 interface TabBarArrayType {
   title: string
@@ -34,18 +13,43 @@ interface TabBarArrayType {
   components: any
 }
 
-function TabBarBox(props: any) {
-  const [data, dispatch] = useReducer(
-    reducer,
-    fromJS({
-      selectedTab: props.selected,
-      tabBarData: props.tabBar,
-      newlyOpenedModal: false,
-      newlyOpenedData: props.actionSheet,
-    }),
-  )
+interface PropType extends PageProps {
+  selected: string
+  tabBar: []
+  actionSheet: []
+}
 
-  const { selectedTab, tabBarData, newlyOpenedModal, newlyOpenedData } = data.toJS()
+function reducer(state: any, action: IAction<any>) {
+  switch (action.type) {
+    case 'changeTitle':
+      return {
+        ...state,
+        documentTitle: action.payload,
+      }
+    case 'changeTabItem':
+      return {
+        ...state,
+        selectedTab: action.payload,
+      }
+    case 'changeNewlyOpenedModal':
+      return {
+        ...state,
+        newlyOpenedModal: action.payload,
+      }
+    default:
+      return state
+  }
+}
+
+function TabBarBox(props: PropType) {
+  const [data, dispatch] = useReducer(reducer, {
+    selectedTab: props.selected,
+    tabBarData: props.tabBar,
+    newlyOpenedModal: false,
+    newlyOpenedData: props.actionSheet,
+  })
+
+  const { selectedTab, tabBarData, newlyOpenedModal, newlyOpenedData } = data
 
   /**
    * @description tab界面渲染
@@ -66,7 +70,7 @@ function TabBarBox(props: any) {
   const handleNewlyOpenedModal = (data: boolean = false) => {
     dispatch({
       type: 'changeNewlyOpenedModal',
-      value: data,
+      payload: data,
     })
   }
 
@@ -81,11 +85,11 @@ function TabBarBox(props: any) {
     if (title) {
       dispatch({
         type: 'changeTabItem',
-        value: title,
+        payload: title,
       })
       dispatch({
         type: 'changeTitle',
-        value: title,
+        payload: title,
       })
     } else {
       handleNewlyOpenedModal(true)
@@ -123,7 +127,9 @@ function TabBarBox(props: any) {
                   <IconStyle width={32} height={32} icon={item.icon} />
                 )
               }
-              selectedIcon={<IconStyle width={24} height={24} icon={item.selectedIcon} />}
+              selectedIcon={
+                <IconStyle width={24} height={24} icon={item.selectedIcon} />
+              }
               onPress={() => handleSelectedIcon(item.title)}
             >
               {renderContent(item.components)}
@@ -147,7 +153,11 @@ function TabBarBox(props: any) {
                 className="am-grid-item-inner-content"
                 onClick={() => handleOpenRoute(dataItem.route)}
               >
-                <img className="entrance-icon" src={dataItem.icon} alt={dataItem.text} />
+                <img
+                  className="entrance-icon"
+                  src={dataItem.icon}
+                  alt={dataItem.text}
+                />
                 <FontXs>{dataItem.text}</FontXs>
               </div>
             )}

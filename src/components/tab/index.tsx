@@ -1,22 +1,16 @@
 import React, { useReducer } from 'react'
 import { Flex } from 'antd-mobile'
-import { fromJS } from 'immutable'
+import { IAction } from '@/store/types'
 import { FontMd, IconStyle } from '@/style'
 import { TabWrap } from './style'
 
-interface StateType {
-  set: (key: string, value: any) => any
-}
-
-interface ActionType {
-  type: string
-  value: any
-}
-
-function reducer(state: StateType, action: ActionType) {
+function reducer(state: any, action: IAction<any>) {
   switch (action.type) {
     case 'changeTabIndex':
-      return state.set('tabIndex', action.value)
+      return {
+        ...state,
+        tabIndex: action.payload,
+      }
     default:
       return state
   }
@@ -34,19 +28,16 @@ export interface TabType {
 }
 
 function Tabs(props: ProsType) {
-  const [data, dispatch] = useReducer(
-    reducer,
-    fromJS({
-      tabIndex: 0,
-    }),
-  )
+  const [data, dispatch] = useReducer(reducer, {
+    tabIndex: 0,
+  })
 
-  const { tabIndex } = data.toJS()
+  const { tabIndex } = data
 
   const handleTabIndex = (data: TabType, index: number) => {
     dispatch({
       type: 'changeTabIndex',
-      value: index,
+      payload: index,
     })
     props.change(data)
   }
@@ -61,7 +52,12 @@ function Tabs(props: ProsType) {
             key={index}
           >
             <Flex justify="center">
-              <IconStyle className="m-r-xs" width={24} height={24} icon={icon} />
+              <IconStyle
+                className="m-r-xs"
+                width={24}
+                height={24}
+                icon={icon}
+              />
               <FontMd>{title}</FontMd>
               <FontMd className="color-text-secondary">{num}</FontMd>
             </Flex>
