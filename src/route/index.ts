@@ -66,6 +66,10 @@ const routes: IRoute[] = [
       import('@/pages/clericalBoard/reviewDetails/receiver'),
     ), // 审核详情-接收人
   },
+  {
+    path: '/personnel-system',
+    component: React.lazy(() => import('@/pages/personnelSystem/index/index')), // 人事系统
+  },
 ]
 
 export default routes

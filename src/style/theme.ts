@@ -4,6 +4,7 @@ export const themesDefault = {
   '@color-text-caption': '#888', // 辅助描述
   '@color-text-disabled': '#bbb', // 失效
   '@color-text-secondary': '#99c0f2', //辅助色
+  '@color-text-subhead': '#565656',
   '@color-text-fill': '#44bed7',
   '@color-text-delete': '#aa4f4f',
 

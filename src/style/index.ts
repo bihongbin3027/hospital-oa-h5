@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
     props.footer ? props.footer + 'px' : 0};
   left: 0;
   right: 0;
+  color: #323232;
   z-index: 1;
 
   /* 定义全局颜色 */
