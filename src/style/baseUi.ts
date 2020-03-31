@@ -37,6 +37,9 @@ export const TagUi = styled.div`
   &.ml {
     padding: 4px 10px;
   }
+  &.radius-lg {
+    border-radius: 7.5px;
+  }
   &.tag-border-normal {
     border: 1px solid ${props => props.theme['@border-color-grey']};
   }
@@ -64,6 +67,10 @@ export const TagUi = styled.div`
   &.tag-primary {
     color: ${props => props.theme['@brand-primary']};
     background: ${props => props.theme['@tag-primary']};
+  }
+  &.tag-green {
+    color: ${props => props.theme['@color-text-green']};
+    background: ${props => props.theme['@color-light-green']};
   }
   &.tag-active {
     color: #fff;

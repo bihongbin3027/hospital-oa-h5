@@ -7,6 +7,7 @@ export const themesDefault = {
   '@color-text-subhead': '#565656',
   '@color-text-fill': '#44bed7',
   '@color-text-delete': '#aa4f4f',
+  '@color-text-green': '#40c9ac',
 
   // 全局/品牌色
   '@brand-primary': '#497fc5',
@@ -22,6 +23,7 @@ export const themesDefault = {
 
   // 背景色
   '@color-icon-base': '#ccc',
+  '@color-light-green': '#dbf0eb',
 
   // button
   '@warning-button-fill': '#e94f4f',

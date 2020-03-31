@@ -49,6 +49,30 @@ export const Wrapper = styled.div`
   }
 
   /* 全局边距 */
+  .m-t-xs {
+    margin-top: 5px;
+  }
+  .m-t-sm {
+    margin-top: 10px;
+  }
+  .m-t-md {
+    margin-top: 15px;
+  }
+  .m-t-lg {
+    margin-top: 20px;
+  }
+  .m-b-xs {
+    margin-bottom: 5px;
+  }
+  .m-b-sm {
+    margin-bottom: 10px;
+  }
+  .m-b-md {
+    margin-bottom: 15px;
+  }
+  .m-b-lg {
+    margin-bottom: 20px;
+  }
   .m-r-xs {
     margin-right: 5px;
   }
@@ -60,6 +84,18 @@ export const Wrapper = styled.div`
   }
   .m-r-lg {
     margin-right: 20px;
+  }
+  .m-l-xs {
+    margin-left: 5px;
+  }
+  .m-l-sm {
+    margin-left: 10px;
+  }
+  .m-l-md {
+    margin-left: 15px;
+  }
+  .m-l-lg {
+    margin-left: 20px;
   }
 
   /* 覆盖ant-mobile样式 */
@@ -199,8 +235,8 @@ export const IconStyle = styled.span`
     props.height ? props.height + 'px' : '20px'};
   border-radius: ${(props: IconProps) =>
     props.radius ? props.radius + 'px' : 0};
-  background-image: url(${(props: IconProps) =>
-    props.icon ? props.icon : normalImage});
+  background-image: ${(props: IconProps) =>
+    'url(' + (props.icon ? props.icon : normalImage) + ')'};
   background-repeat: no-repeat;
   background-size: contain;
 `

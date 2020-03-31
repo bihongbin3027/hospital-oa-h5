@@ -56,7 +56,19 @@ export const getWxJsDk = () => {
  */
 export const getCurrentUser = () => {
   return request({
-    url: '/oaCloud/auth/getWXjsdk',
+    url: '/oaCloud/auth/getCurrentUser',
+    method: 'get',
+  })
+}
+
+/**
+ * @description 微信授权回调
+ * @author biHongBin
+ * @Date 2020-03-31 10:12:01
+ */
+export const getWxUserId = () => {
+  return request({
+    url: '/oaCloud/auth/getWxUserId',
     method: 'get',
   })
 }
