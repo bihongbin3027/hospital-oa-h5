@@ -70,6 +70,10 @@ const routes: IRoute[] = [
     path: '/personnel-system',
     component: React.lazy(() => import('@/pages/personnelSystem/index/index')), // 人事系统
   },
+  {
+    path: '/personnel-staff-details',
+    component: React.lazy(() => import('@/pages/personnelSystem/staffDetails')), // 职员详情
+  },
 ]
 
 export default routes

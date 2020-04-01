@@ -35,6 +35,12 @@ export const Wrapper = styled.div`
   .color-text-fill {
     color: ${props => props.theme['@color-text-fill']};
   }
+  .color-text-green {
+    color: ${props => props.theme['@color-text-green']};
+  }
+  .color-text-subhead {
+    color: ${props => props.theme['@color-text-subhead']};
+  }
   .brand-primary {
     color: ${props => props.theme['@brand-primary']};
   }
@@ -207,24 +213,28 @@ export const FontXs = styled.div`
     props.display ? props.display : 'block'};
 `
 
-// 特别小号字体及颜色
 export const FontTiny = styled(FontXs)`
   font-size: 10px;
 `
 
-// 中等字体及颜色
 export const FontMm = styled(FontXs)`
   font-size: 13px;
 `
 
-// 重置默认字体及颜色
 export const FontMr = styled(FontXs)`
   font-size: 14px;
 `
 
-// 较大字体及颜色
 export const FontMd = styled(FontXs)`
   font-size: 16px;
+`
+
+export const FontLg = styled(FontXs)`
+  font-size: 18px;
+`
+
+export const FontXlg = styled(FontXs)`
+  font-size: 20px;
 `
 
 // 自定义图标
@@ -313,4 +323,23 @@ export const ListLi = styled.li`
   .name {
     margin-right: 10px;
   }
+`
+
+// 边框
+export const Hr = styled.div`
+  height: 0;
+  border-top: 1px solid ${props => props.theme['@border-color-base']};
+`
+
+// 角标
+export const Subscript = styled.div`
+  display: flex;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: ${props => props.theme['@color-text-disabled']};
+  background-color: ${props => props.theme['@border-color-base']};
 `

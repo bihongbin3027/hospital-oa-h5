@@ -98,9 +98,6 @@ export const DepItem = styled.div`
 
 export const PersonnelItem = styled.div`
   flex: 0 0 50%;
-  &.a {
-    column-count: 2;
-  }
   .personnel-box {
     padding: 10px 5px;
     margin: 5px;
@@ -127,6 +124,27 @@ export const PersonnelItem = styled.div`
 `
 
 export const Falls = styled.div`
-  column-count: 2;
-  column-gap: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5px;
+  margin-right: 5px;
+  .personnel-box {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .falls-left-icon {
+    margin-top: 2px;
+  }
+  .falls-user {
+    margin-left: 6.5px;
+  }
+  .falls-seven {
+    margin-bottom: 8px;
+  }
+  .falls-office {
+    > div {
+      flex: 0 0 50%;
+      margin-bottom: 8px;
+    }
+  }
 `

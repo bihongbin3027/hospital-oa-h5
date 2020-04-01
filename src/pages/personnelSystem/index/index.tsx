@@ -2,7 +2,7 @@ import React, { useReducer } from 'react'
 import { SearchBar, Grid, Flex } from 'antd-mobile'
 import { PageProps } from '@/typings'
 import { IAction } from '@/store/types'
-import { Wrapper, IconStyle, FontXs, FontTiny, FontMd } from '@/style'
+import { Wrapper, IconStyle, FontXs, FontTiny, FontMd, FontMr } from '@/style'
 import { TagUi } from '@/style/baseUi'
 import {
   PersonnelSearch,
@@ -172,17 +172,23 @@ const PersonnelSystem = (props: PageProps) => {
       <Falls>
         <PersonnelItem className="falls-box">
           <Flex className="personnel-box" align="start">
-            <IconStyle width={15} height={15} />
-          </Flex>
-        </PersonnelItem>
-        <PersonnelItem className="falls-box">
-          <Flex className="personnel-box" align="start">
-            <IconStyle width={15} height={15} />
-          </Flex>
-        </PersonnelItem>
-        <PersonnelItem className="falls-box">
-          <Flex className="personnel-box" align="start">
-            <IconStyle width={15} height={15} />
+            <IconStyle className="falls-left-icon" width={15} height={15} />
+            <div className="falls-user">
+              <FontMd className="falls-seven">
+                院领导
+                <FontMr display="inline" className="color-text-caption m-l-xs">
+                  5
+                </FontMr>
+              </FontMd>
+              <div className="falls-seven">科室主任：李四</div>
+              <Flex className="falls-office" wrap="wrap">
+                <FontXs className="color-text-caption">博士：1</FontXs>
+                <FontXs className="color-text-caption">职员：12</FontXs>
+                <FontXs className="color-text-caption">硕士：1</FontXs>
+                <FontXs className="color-text-delete">离职：1</FontXs>
+              </Flex>
+              <FontXs className="color-text-green">本月共有1人生日</FontXs>
+            </div>
           </Flex>
         </PersonnelItem>
       </Falls>
