@@ -19,7 +19,12 @@ export const Wrapper = styled.div`
     props.footer ? props.footer + 'px' : 0};
   left: 0;
   right: 0;
+  max-width: 800px;
   color: #323232;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  font-family: -apple-system, Helvetica, sans-serif;
+  margin: 0 auto;
   z-index: 1;
 
   /* 定义全局颜色 */

@@ -43,13 +43,13 @@ export const TabItem = styled.div`
   position: relative;
   box-sizing: border-box;
   .dep-name {
-    margin-top: 8px;
+    margin-top: 4px;
     position: relative;
     color: ${props => props.theme['@color-text-subhead']};
     .dep-people {
       position: absolute;
-      top: 1px;
-      margin-left: 1px;
+      top: 2px;
+      margin-left: 2px;
       color: ${props => props.theme['@color-text-disabled']};
     }
   }
@@ -133,7 +133,7 @@ export const Falls = styled.div`
     padding-right: 12px;
   }
   .falls-left-icon {
-    margin-top: 2px;
+    flex: 0 0 18px;
   }
   .falls-user {
     margin-left: 6.5px;

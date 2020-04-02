@@ -36,6 +36,17 @@ import withdrawIcon from '@/assets/images/withdraw-icon.png'
 import clearIcon from '@/assets/images/clear-icon.png'
 import releaseIcon from '@/assets/images/release-icon.png'
 import confirmFootIcon from '@/assets/images/confirm-foot-icon.png'
+import personnelAllIcon from '@/assets/images/personnel-all-icon.png'
+import personnelAllActiveIcon from '@/assets/images/personnel-all-active-icon.png'
+import personnelAminIcon from '@/assets/images/personnel-amin-icon.png'
+import personnelAminActiveIcon from '@/assets/images/personnel-amin-active-icon.png'
+import personnelClinicalIcon from '@/assets/images/personnel-clinical-icon.png'
+import personnelClinicalActiveIcon from '@/assets/images/personnel-clinical-active-icon.png'
+import personnelMtIcon from '@/assets/images/personnel-mt-icon.png'
+import personnelMtActiveIcon from '@/assets/images/personnel-mt-active-icon.png'
+import maleIcon from '@/assets/images/male-icon.png'
+import girlIcon from '@/assets/images/girl-icon.png'
+import personnelDepartIcon from '@/assets/images/personnel-department-icon.png'
 
 // 默认图片
 const normalImage =
@@ -81,4 +92,15 @@ export {
   clearIcon,
   releaseIcon,
   confirmFootIcon,
+  personnelAllIcon,
+  personnelAllActiveIcon,
+  personnelAminIcon,
+  personnelAminActiveIcon,
+  personnelClinicalIcon,
+  personnelClinicalActiveIcon,
+  personnelMtIcon,
+  personnelMtActiveIcon,
+  maleIcon,
+  girlIcon,
+  personnelDepartIcon,
 }

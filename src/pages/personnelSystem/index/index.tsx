@@ -5,6 +5,19 @@ import { IAction } from '@/store/types'
 import { Wrapper, IconStyle, FontXs, FontTiny, FontMd, FontMr } from '@/style'
 import { TagUi } from '@/style/baseUi'
 import {
+  personnelAllIcon,
+  personnelAllActiveIcon,
+  personnelAminIcon,
+  personnelAminActiveIcon,
+  personnelClinicalIcon,
+  personnelClinicalActiveIcon,
+  personnelMtIcon,
+  personnelMtActiveIcon,
+  maleIcon,
+  girlIcon,
+  personnelDepartIcon,
+} from '@/utils/config'
+import {
   PersonnelSearch,
   TabMenu,
   TabMenuBox,
@@ -14,10 +27,10 @@ import {
   PersonnelItem,
   Falls,
 } from './style'
-import { getWxUserId } from '@/api/user'
 
 interface TabType {
   icon: string
+  iconActive: string
   name: string
   people: string | number
 }
@@ -44,22 +57,26 @@ const PersonnelSystem = (props: PageProps) => {
     tabIndex: 0,
     tabData: [
       {
-        icon: '',
+        icon: personnelAllIcon,
+        iconActive: personnelAllActiveIcon,
         name: '全部',
         people: 1131,
       },
       {
-        icon: '',
+        icon: personnelAminIcon,
+        iconActive: personnelAminActiveIcon,
         name: '行政',
         people: 0,
       },
       {
-        icon: '',
+        icon: personnelClinicalIcon,
+        iconActive: personnelClinicalActiveIcon,
         name: '临床科室',
         people: 0,
       },
       {
-        icon: '',
+        icon: personnelMtIcon,
+        iconActive: personnelMtActiveIcon,
         name: '医技科室',
         people: 0,
       },
@@ -96,8 +113,6 @@ const PersonnelSystem = (props: PageProps) => {
     })
   }
 
-  getWxUserId()
-
   return (
     <Wrapper>
       <PersonnelSearch>
@@ -119,7 +134,11 @@ const PersonnelSystem = (props: PageProps) => {
                 className={data.tabIndex === index ? 'active' : ''}
                 onClick={() => depItemClick(item, index)}
               >
-                <IconStyle width={22} height={22} icon={item.icon} />
+                <IconStyle
+                  width={28}
+                  height={28}
+                  icon={data.tabIndex === index ? item.iconActive : item.icon}
+                />
                 <FontXs className="dep-name">
                   {item.name}
                   {item.people > 0 ? (
@@ -156,7 +175,36 @@ const PersonnelSystem = (props: PageProps) => {
             <div className="personnel-photo"></div>
             <Flex wrap="wrap" className="personnel-user">
               <FontMd className="m-b-xs">
-                张三<span className="color-text-caption">男</span>
+                张三
+                <IconStyle
+                  className="m-l-xs"
+                  width={10}
+                  height={10}
+                  icon={maleIcon}
+                />
+              </FontMd>
+              <div className="color-text-caption m-b-xs">工号：0006</div>
+              <div className="color-text-caption m-b-xs">上级：李四</div>
+              <Flex>
+                <TagUi className="tag-green radius-lg">
+                  <FontXs>院领导</FontXs>
+                </TagUi>
+              </Flex>
+            </Flex>
+          </Flex>
+        </PersonnelItem>
+        <PersonnelItem>
+          <Flex className="personnel-box" align="start">
+            <div className="personnel-photo"></div>
+            <Flex wrap="wrap" className="personnel-user">
+              <FontMd className="m-b-xs">
+                张三
+                <IconStyle
+                  className="m-l-xs"
+                  width={10}
+                  height={10}
+                  icon={girlIcon}
+                />
               </FontMd>
               <div className="color-text-caption m-b-xs">工号：0006</div>
               <div className="color-text-caption m-b-xs">上级：李四</div>
@@ -172,7 +220,12 @@ const PersonnelSystem = (props: PageProps) => {
       <Falls>
         <PersonnelItem className="falls-box">
           <Flex className="personnel-box" align="start">
-            <IconStyle className="falls-left-icon" width={15} height={15} />
+            <IconStyle
+              className="falls-left-icon"
+              width={18}
+              height={18}
+              icon={personnelDepartIcon}
+            />
             <div className="falls-user">
               <FontMd className="falls-seven">
                 院领导
