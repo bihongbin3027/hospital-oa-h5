@@ -35,6 +35,14 @@ interface TabType {
   people: string | number
 }
 
+interface DepItem {
+  (item: TabType, index: number): void
+}
+
+interface OfficeItem {
+  (item: string, index: number): void
+}
+
 const reducer = (state: any, action: IAction<any>) => {
   switch (action.type) {
     case 'changeTabIndex':
@@ -92,7 +100,7 @@ const PersonnelSystem = (props: PageProps) => {
    * @param {Number} index
    * @Date 2020-03-30 18:06:02
    */
-  const depItemClick = (item: TabType, index: number) => {
+  const depItemClick: DepItem = (item, index) => {
     dispatch({
       type: 'changeTabIndex',
       payload: index,
@@ -106,7 +114,7 @@ const PersonnelSystem = (props: PageProps) => {
    * @param {Number} index
    * @Date 2020-03-31 15:30:19
    */
-  const officeItemClick = (item: string, index: number) => {
+  const officeItemClick: OfficeItem = (item, index) => {
     dispatch({
       type: 'changeOfficeIndex',
       payload: index,
