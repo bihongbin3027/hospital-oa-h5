@@ -64,7 +64,7 @@ const Scroll = forwardRef((props: propType, ref) => {
       setBScroll(null)
     }
     // eslint-disable-next-line
-  }, []);
+  }, [])
 
   useEffect(() => {
     if (!bScroll || !onScroll) return
