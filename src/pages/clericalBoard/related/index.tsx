@@ -58,7 +58,7 @@ function Related(props: PageProps) {
 
   return (
     <PageContainer backgroundColor="#fff">
-      <Tab tab={tabData} change={tab => tabChange(tab)} />
+      <Tab tab={tabData} change={(tab) => tabChange(tab)} />
       <WingBlank size="md">
         <ListLi onClick={() => routerDetails()}>
           <Flex justify="between">
@@ -68,7 +68,7 @@ function Related(props: PageProps) {
             </Flex>
             <Flex>
               <FontMm className="brand-tension m-r-xs">待审核</FontMm>
-              <div onClick={e => e.stopPropagation()}>
+              <div onClick={(e) => e.stopPropagation()}>
                 <Flex>
                   <Popover
                     visible={false}

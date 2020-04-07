@@ -199,7 +199,7 @@ function Searcher(props: PropType) {
               extra="Optional"
               maxDate={maxDate}
               value={new Date(startDate.replace(/-/g, '/'))}
-              onChange={date => handleSetTime(date, 'startDate')}
+              onChange={(date) => handleSetTime(date, 'startDate')}
             >
               <input value={startDate} type="text" readOnly />
             </DatePicker>
@@ -210,7 +210,7 @@ function Searcher(props: PropType) {
               extra="Optional"
               maxDate={maxDate}
               value={new Date(endDate.replace(/-/g, '/'))}
-              onChange={data => handleSetTime(data, 'endDate')}
+              onChange={(data) => handleSetTime(data, 'endDate')}
             >
               <input value={endDate} type="text" readOnly />
             </DatePicker>

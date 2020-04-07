@@ -7,7 +7,7 @@ const localName: string = 'wx_hospital_oa_h5'
  * @param {Number} delay
  * @Date 2020-03-31 10:33:40
  */
-export const debounce = function(this: any, fn: Function, delay: number) {
+export const debounce = function (this: any, fn: Function, delay: number) {
   let timer: number | undefined
   return (...args: any[]) => {
     if (timer) clearTimeout(timer)
@@ -25,7 +25,7 @@ export const debounce = function(this: any, fn: Function, delay: number) {
  * @param {Number} delay
  * @Date 2020-03-31 11:24:14
  */
-export const throttle = function(this: any, fn: Function, delay: number) {
+export const throttle = function (this: any, fn: Function, delay: number) {
   let timer: number | undefined
   return (...args: any[]) => {
     if (!timer) {

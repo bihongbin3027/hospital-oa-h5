@@ -73,7 +73,7 @@ function Workbench(props: PageProps) {
               data={gridData}
               square={false}
               hasLine={false}
-              onClick={el => gridMenuClick(el)}
+              onClick={(el) => gridMenuClick(el)}
               renderItem={(dataItem: any) => (
                 <>
                   <GridIcon src={dataItem.icon} />

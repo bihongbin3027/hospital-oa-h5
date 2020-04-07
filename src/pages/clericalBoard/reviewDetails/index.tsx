@@ -303,7 +303,7 @@ function ReviewDetails(props: PageProps) {
             <TextareaItem
               className="am-list-textarea"
               value={opinionContent}
-              onChange={value => changeOpinionContent(value)}
+              onChange={(value) => changeOpinionContent(value)}
               placeholder="请输入审批意见"
               rows={4}
               count={100}

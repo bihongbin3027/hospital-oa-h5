@@ -35,7 +35,7 @@ function AnnexModal(props: PropType) {
     let localIdArray: Array<object> = []
     ;(window as any).wx.chooseImage({
       sourceType: [type],
-      success: function(res: any) {
+      success: function (res: any) {
         console.log('选择图片返回结果', res)
         localIdArray = res.localIds
         let i = 0
@@ -43,7 +43,7 @@ function AnnexModal(props: PropType) {
         const upload = () => {
           ;(window as any).wx.uploadImage({
             localId: localIdArray[i],
-            success: function(svr: any) {
+            success: function (svr: any) {
               const { serverId } = svr
               props.success({
                 file: res.tempFiles[i],

@@ -300,7 +300,7 @@ function DocDetails(props: PageProps) {
               <TextareaItem
                 className="am-list-textarea"
                 value={opinionContent}
-                onChange={value => changeOpinionContent(value)}
+                onChange={(value) => changeOpinionContent(value)}
                 placeholder="请输入内容"
                 rows={4}
                 count={100}

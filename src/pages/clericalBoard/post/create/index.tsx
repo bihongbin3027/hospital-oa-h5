@@ -315,14 +315,14 @@ function PostCreate(props: PageProps) {
             <InputItem
               className="am-list-input"
               value={inputTheme}
-              onChange={value => changeInputTheme(value)}
+              onChange={(value) => changeInputTheme(value)}
               maxLength={50}
               placeholder="请输入主题…（50个字）"
             />
             <TextareaItem
               className="am-list-textarea"
               value={inputThemeContent}
-              onChange={value => changeInputThemeContent(value)}
+              onChange={(value) => changeInputThemeContent(value)}
               placeholder="请输入主题内容"
               rows={4}
               count={100}
@@ -427,7 +427,7 @@ function PostCreate(props: PageProps) {
         title={selectModalTitle.title}
         visible={selectModalVisible}
         data={selectModalData}
-        confirm={data => {
+        confirm={(data) => {
           handleConfirmSelectModal(data)
         }}
         cancel={handleCancelSelectModal}

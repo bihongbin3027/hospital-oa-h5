@@ -54,7 +54,7 @@ function SignFor(props: PageProps) {
   return (
     <PageContainer backgroundColor="#fff">
       <Searcher search={searchValue} />
-      <Tab tab={tabData} change={tab => tabChange(tab)} />
+      <Tab tab={tabData} change={(tab) => tabChange(tab)} />
       <WingBlank size="md">
         <ListLi onClick={() => routerDetails()}>
           <Flex justify="between">
