@@ -96,8 +96,8 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build: prod": "env-cmd -f .env.production react-app-rewired build",
-    "build: stage": "env-cmd -f .env.staging react-app-rewired build",
+    "build:prod": "env-cmd -f .env.production react-app-rewired build",
+    "build:stage": "env-cmd -f .env.staging react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom"
   },
   "eslintConfig": {
