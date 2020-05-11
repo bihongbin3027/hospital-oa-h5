@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { TabBar, Modal, Grid } from 'antd-mobile'
-import { PageProps } from '@/typings'
 import { IAction } from '@/store/types'
 import { closeModalIcon } from '@/utils/config'
 import { Wrapper, IconStyle, NewlyOpenedBox, FontXs } from '@/style'
@@ -10,10 +9,10 @@ interface TabBarArrayType {
   title: string
   icon: string
   selectedIcon: string
-  components: any
+  components: React.FC
 }
 
-interface PropType extends PageProps {
+interface PropType {
   selected: string
   tabBar: []
   actionSheet: []
@@ -42,6 +41,7 @@ function reducer(state: any, action: IAction<any>) {
 }
 
 function TabBarBox(props: PropType) {
+  const history = useHistory()
   const [data, dispatch] = useReducer(reducer, {
     selectedTab: props.selected,
     tabBarData: props.tabBar,
@@ -57,7 +57,7 @@ function TabBarBox(props: PropType) {
    * @param {Any} components
    * @Date 2020-02-22 20:59:36
    */
-  const renderContent = (components: any) => {
+  const renderContent = (components: React.FC) => {
     return components
   }
 
@@ -103,7 +103,7 @@ function TabBarBox(props: PropType) {
    */
   const handleOpenRoute = (routeName: string) => {
     if (routeName) {
-      props.history.push(routeName)
+      history.push(routeName)
     }
   }
 
@@ -174,4 +174,4 @@ function TabBarBox(props: PropType) {
   )
 }
 
-export default withRouter(TabBarBox)
+export default React.memo(TabBarBox)

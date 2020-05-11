@@ -68,4 +68,4 @@ function Tabs(props: ProsType) {
   )
 }
 
-export const Tab = Tabs
+export default Tabs

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { WingBlank, Flex } from 'antd-mobile'
 import { PageProps } from '@/typings'
-import { Tab, TabType } from '@/components/tab'
+import Tabs, { TabType } from '@/components/tab'
 import { TagUi } from '@/style/baseUi'
 import Searcher from '@/components/searcher'
 import { PageContainer, ListLi, FontMm, FontMd } from '@/style'
@@ -54,7 +54,7 @@ function SignFor(props: PageProps) {
   return (
     <PageContainer backgroundColor="#fff">
       <Searcher search={searchValue} />
-      <Tab tab={tabData} change={(tab) => tabChange(tab)} />
+      <Tabs tab={tabData} change={(tab) => tabChange(tab)} />
       <WingBlank size="md">
         <ListLi onClick={() => routerDetails()}>
           <Flex justify="between">

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { WingBlank, Flex, Popover } from 'antd-mobile'
 import { PageProps } from '@/typings'
-import { Tab, TabType } from '@/components/tab'
+import Tabs, { TabType } from '@/components/tab'
 import { TagUi } from '@/style/baseUi'
 import {
   PageContainer,
@@ -58,7 +58,7 @@ function Related(props: PageProps) {
 
   return (
     <PageContainer backgroundColor="#fff">
-      <Tab tab={tabData} change={(tab) => tabChange(tab)} />
+      <Tabs tab={tabData} change={(tab) => tabChange(tab)} />
       <WingBlank size="md">
         <ListLi onClick={() => routerDetails()}>
           <Flex justify="between">
